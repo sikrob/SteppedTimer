@@ -9,19 +9,25 @@
 import SwiftUI
 
 struct ContentView: View {
+  @State private var toolbarPlayImageName = "play.fill"
+  @State private var toolbarStopImageName = "stop.fill"
+
+  private func toolbarPlayButtonCallback() {
+    toolbarPlayImageName = "pause"
+  }
+
   var body: some View {
-    var timerToolbarParams = TimerToolbarParams(
-      playCallback: { },
+    let timerToolbarParams = TimerToolbarParams(
+      playCallback: toolbarPlayButtonCallback,
       stopCallback: { },
-      playImageSystemName: "play.fill",
-      stopImageSystemName: "stop.fill")
+      playImageSystemName: toolbarPlayImageName,
+      stopImageSystemName: toolbarStopImageName)
 
     return VStack {
       Text("Yo!")
       Text("Yo!")
       Text("Yo!")
       Text("Yo!")
-      // Toolbar
       TimerToolbar(params: timerToolbarParams)
     }
   }
