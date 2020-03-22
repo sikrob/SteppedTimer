@@ -105,16 +105,14 @@
 		E1CB2C862426F44E00C8D5A0 /* Stepped Timer */ = {
 			isa = PBXGroup;
 			children = (
-				E1CB2CC32427156900C8D5A0 /* TimerToolbar.swift */,
+				E1CB2CC5242715C300C8D5A0 /* Views */,
 				E1CB2C872426F44E00C8D5A0 /* AppDelegate.swift */,
 				E1CB2C892426F44E00C8D5A0 /* SceneDelegate.swift */,
-				E1CB2C8E2426F44E00C8D5A0 /* ContentView.swift */,
 				E1CB2C902426F44F00C8D5A0 /* Assets.xcassets */,
 				E1CB2C952426F44F00C8D5A0 /* LaunchScreen.storyboard */,
 				E1CB2C982426F44F00C8D5A0 /* Info.plist */,
 				E1CB2C8B2426F44E00C8D5A0 /* Stepped_Timer.xcdatamodeld */,
 				E1CB2C922426F44F00C8D5A0 /* Preview Content */,
-				E1CB2CC1242712F600C8D5A0 /* TimerToolbarParams.swift */,
 			);
 			path = "Stepped Timer";
 			sourceTree = "<group>";
@@ -143,6 +141,24 @@
 				E1CB2CAE2426F45000C8D5A0 /* Info.plist */,
 			);
 			path = "Stepped TimerUITests";
+			sourceTree = "<group>";
+		};
+		E1CB2CC5242715C300C8D5A0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1CB2C8E2426F44E00C8D5A0 /* ContentView.swift */,
+				E1CB2CC7242716B500C8D5A0 /* TimerToolbar */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1CB2CC7242716B500C8D5A0 /* TimerToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				E1CB2CC1242712F600C8D5A0 /* TimerToolbarParams.swift */,
+				E1CB2CC32427156900C8D5A0 /* TimerToolbar.swift */,
+			);
+			path = TimerToolbar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
