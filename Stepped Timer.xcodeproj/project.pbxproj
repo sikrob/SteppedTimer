@@ -18,6 +18,7 @@
 		E1CB2CAD2426F45000C8D5A0 /* Stepped_TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CAC2426F45000C8D5A0 /* Stepped_TimerUITests.swift */; };
 		E1CB2CC2242712F600C8D5A0 /* TimerToolbarParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CC1242712F600C8D5A0 /* TimerToolbarParams.swift */; };
 		E1CB2CC42427156900C8D5A0 /* TimerToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CC32427156900C8D5A0 /* TimerToolbar.swift */; };
+		E1CB2CC924271CFF00C8D5A0 /* ContentViewLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CC824271CFF00C8D5A0 /* ContentViewLogic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		E1CB2CAE2426F45000C8D5A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1CB2CC1242712F600C8D5A0 /* TimerToolbarParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerToolbarParams.swift; sourceTree = "<group>"; };
 		E1CB2CC32427156900C8D5A0 /* TimerToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerToolbar.swift; sourceTree = "<group>"; };
+		E1CB2CC824271CFF00C8D5A0 /* ContentViewLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLogic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +148,7 @@
 		E1CB2CC5242715C300C8D5A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E1CB2C8E2426F44E00C8D5A0 /* ContentView.swift */,
+				E1CB2CCA24271D6900C8D5A0 /* ContentView */,
 				E1CB2CC7242716B500C8D5A0 /* TimerToolbar */,
 			);
 			path = Views;
@@ -159,6 +161,15 @@
 				E1CB2CC32427156900C8D5A0 /* TimerToolbar.swift */,
 			);
 			path = TimerToolbar;
+			sourceTree = "<group>";
+		};
+		E1CB2CCA24271D6900C8D5A0 /* ContentView */ = {
+			isa = PBXGroup;
+			children = (
+				E1CB2CC824271CFF00C8D5A0 /* ContentViewLogic.swift */,
+				E1CB2C8E2426F44E00C8D5A0 /* ContentView.swift */,
+			);
+			path = ContentView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +307,7 @@
 				E1CB2C8D2426F44E00C8D5A0 /* Stepped_Timer.xcdatamodeld in Sources */,
 				E1CB2C8F2426F44E00C8D5A0 /* ContentView.swift in Sources */,
 				E1CB2CC42427156900C8D5A0 /* TimerToolbar.swift in Sources */,
+				E1CB2CC924271CFF00C8D5A0 /* ContentViewLogic.swift in Sources */,
 				E1CB2C8A2426F44E00C8D5A0 /* SceneDelegate.swift in Sources */,
 				E1CB2CC2242712F600C8D5A0 /* TimerToolbarParams.swift in Sources */,
 			);
