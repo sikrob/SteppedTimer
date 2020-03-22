@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {  
+struct ContentView: View {
   @State private var toolbarPlayImageName = "play.fill"
   @State private var toolbarStopImageName = "stop.fill"
 
@@ -30,6 +30,10 @@ struct ContentView: View {
       stopImageSystemName: toolbarStopImageName)
 
     return VStack {
+      Text("Big Timer")
+      List {
+        Text("Yo")
+      }
       TimerToolbar(params: timerToolbarParams)
     }
   }

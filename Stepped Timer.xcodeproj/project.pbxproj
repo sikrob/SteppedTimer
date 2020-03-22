@@ -19,6 +19,9 @@
 		E1CB2CC2242712F600C8D5A0 /* TimerToolbarParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CC1242712F600C8D5A0 /* TimerToolbarParams.swift */; };
 		E1CB2CC42427156900C8D5A0 /* TimerToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CC32427156900C8D5A0 /* TimerToolbar.swift */; };
 		E1CB2CC924271CFF00C8D5A0 /* ContentViewLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CC824271CFF00C8D5A0 /* ContentViewLogic.swift */; };
+		E1CB2CCE2427BC2600C8D5A0 /* CountdownTimerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CCD2427BC2600C8D5A0 /* CountdownTimerText.swift */; };
+		E1CB2CD12427BDE600C8D5A0 /* CountdownTimerTextParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CD02427BDE600C8D5A0 /* CountdownTimerTextParams.swift */; };
+		E1CB2CD32427BEA900C8D5A0 /* CountdownTimerTextLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CD22427BEA900C8D5A0 /* CountdownTimerTextLogic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		E1CB2CC1242712F600C8D5A0 /* TimerToolbarParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerToolbarParams.swift; sourceTree = "<group>"; };
 		E1CB2CC32427156900C8D5A0 /* TimerToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerToolbar.swift; sourceTree = "<group>"; };
 		E1CB2CC824271CFF00C8D5A0 /* ContentViewLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLogic.swift; sourceTree = "<group>"; };
+		E1CB2CCD2427BC2600C8D5A0 /* CountdownTimerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerText.swift; sourceTree = "<group>"; };
+		E1CB2CD02427BDE600C8D5A0 /* CountdownTimerTextParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerTextParams.swift; sourceTree = "<group>"; };
+		E1CB2CD22427BEA900C8D5A0 /* CountdownTimerTextLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerTextLogic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +156,7 @@
 			children = (
 				E1CB2CCA24271D6900C8D5A0 /* ContentView */,
 				E1CB2CC7242716B500C8D5A0 /* TimerToolbar */,
+				E1CB2CCF2427BDB500C8D5A0 /* CountdownTimerText */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -157,8 +164,8 @@
 		E1CB2CC7242716B500C8D5A0 /* TimerToolbar */ = {
 			isa = PBXGroup;
 			children = (
-				E1CB2CC1242712F600C8D5A0 /* TimerToolbarParams.swift */,
 				E1CB2CC32427156900C8D5A0 /* TimerToolbar.swift */,
+				E1CB2CC1242712F600C8D5A0 /* TimerToolbarParams.swift */,
 			);
 			path = TimerToolbar;
 			sourceTree = "<group>";
@@ -166,10 +173,20 @@
 		E1CB2CCA24271D6900C8D5A0 /* ContentView */ = {
 			isa = PBXGroup;
 			children = (
-				E1CB2CC824271CFF00C8D5A0 /* ContentViewLogic.swift */,
 				E1CB2C8E2426F44E00C8D5A0 /* ContentView.swift */,
+				E1CB2CC824271CFF00C8D5A0 /* ContentViewLogic.swift */,
 			);
 			path = ContentView;
+			sourceTree = "<group>";
+		};
+		E1CB2CCF2427BDB500C8D5A0 /* CountdownTimerText */ = {
+			isa = PBXGroup;
+			children = (
+				E1CB2CCD2427BC2600C8D5A0 /* CountdownTimerText.swift */,
+				E1CB2CD02427BDE600C8D5A0 /* CountdownTimerTextParams.swift */,
+				E1CB2CD22427BEA900C8D5A0 /* CountdownTimerTextLogic.swift */,
+			);
+			path = CountdownTimerText;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,11 +321,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1CB2C882426F44E00C8D5A0 /* AppDelegate.swift in Sources */,
+				E1CB2CCE2427BC2600C8D5A0 /* CountdownTimerText.swift in Sources */,
 				E1CB2C8D2426F44E00C8D5A0 /* Stepped_Timer.xcdatamodeld in Sources */,
+				E1CB2CD32427BEA900C8D5A0 /* CountdownTimerTextLogic.swift in Sources */,
 				E1CB2C8F2426F44E00C8D5A0 /* ContentView.swift in Sources */,
 				E1CB2CC42427156900C8D5A0 /* TimerToolbar.swift in Sources */,
 				E1CB2CC924271CFF00C8D5A0 /* ContentViewLogic.swift in Sources */,
 				E1CB2C8A2426F44E00C8D5A0 /* SceneDelegate.swift in Sources */,
+				E1CB2CD12427BDE600C8D5A0 /* CountdownTimerTextParams.swift in Sources */,
 				E1CB2CC2242712F600C8D5A0 /* TimerToolbarParams.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
