@@ -6,3 +6,10 @@
 //  Copyright © 2020 Robert Sikorski. All rights reserved.
 //
 
+import Foundation
+
+func convertTimeIntervalToTimerString(timeInterval: TimeInterval) -> String {
+  var timerString = "\(timeInterval)"
+
+  return timerString
+}

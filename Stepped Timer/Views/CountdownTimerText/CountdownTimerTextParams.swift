@@ -6,6 +6,9 @@
 //  Copyright © 2020 Robert Sikorski. All rights reserved.
 //
 
+import SwiftUI
+
 struct CountdownTimerTextParams {
-  
+  var timeInterval: TimeInterval
+  var font: Font
 }
