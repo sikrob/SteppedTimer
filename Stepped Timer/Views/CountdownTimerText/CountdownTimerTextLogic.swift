@@ -9,7 +9,12 @@
 import Foundation
 
 func convertTimeIntervalToTimerString(timeInterval: TimeInterval) -> String {
-  var timerString = "\(timeInterval)"
+  let minutes = Int(floor(timeInterval / 60))
+  let seconds = floor(timeInterval.truncatingRemainder(dividingBy: 60) * 10) / 10
+  let leadingMinutesZero = minutes < 10 ? "0" : ""
+  let leadingSecondsZero = seconds < 10 ? "0" : ""
+
+  let timerString = "\(leadingMinutesZero)\(minutes):\(leadingSecondsZero)\(seconds)"
 
   return timerString
 }
