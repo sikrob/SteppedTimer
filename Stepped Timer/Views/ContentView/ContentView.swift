@@ -9,17 +9,32 @@
 import SwiftUI
 
 struct ContentView: View {
+  @State private var timerRunning = false
   @State private var toolbarPlayImageName = "play.fill"
-  @State private var toolbarStopImageName = "stop.fill"
+  @State private var toolbarStopImageName = "arrow.clockwise.circle.fill"
+
+  // TBD: How to outsource stateupdate... can you? Can we do it if we make it public?
 
   private func toolbarPlayButtonAction() {
-    // determine timer state
-    // set update
-    // set new image name
-    toolbarPlayImageName = "pause"
+    if timerRunning {
+      timerRunning = false
+      toolbarPlayImageName = "play.fill"
+      toolbarStopImageName = "arrow.clockwise.circle.fill"
+    } else {
+      timerRunning = true
+      toolbarPlayImageName = "pause"
+      toolbarStopImageName = "stop.fill"
+    }
   }
+
   private func toolbarStopButtonAction() {
-    toolbarStopImageName = "stop"
+    if timerRunning {
+      timerRunning = false
+      toolbarPlayImageName = "play.fill"
+      toolbarStopImageName = "arrow.clockwise.circle.fill"
+    } else { // reset
+
+    }
   }
 
   var body: some View {
