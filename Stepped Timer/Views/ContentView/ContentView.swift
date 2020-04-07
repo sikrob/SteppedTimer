@@ -9,45 +9,36 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State private var timerRunning = false
-  @State private var toolbarPlayImageName = "play.fill"
-  @State private var toolbarStopImageName = "arrow.clockwise.circle.fill"
-
-  // TBD: How to outsource stateupdate... can you? Can we do it if we make it public?
+  @State var state = ContentViewState(maxTime: 0,
+                                      currentTime: 0,
+                                      timerRunning: false,
+                                      toolbarPlayImageName: "play.fill",
+                                      toolbarStopImageName: "arrow.clockwise.circle.fill")
 
   private func toolbarPlayButtonAction() {
-    if timerRunning {
-      timerRunning = false
-      toolbarPlayImageName = "play.fill"
-      toolbarStopImageName = "arrow.clockwise.circle.fill"
-    } else {
-      timerRunning = true
-      toolbarPlayImageName = "pause"
-      toolbarStopImageName = "stop.fill"
-    }
+    state = updateStateOnPlayButtonAction(timerRunning: state.timerRunning,
+                                          maxTime: state.maxTime,
+                                          currentTime: state.currentTime)
   }
 
   private func toolbarStopButtonAction() {
-    if timerRunning {
-      timerRunning = false
-      toolbarPlayImageName = "play.fill"
-      toolbarStopImageName = "arrow.clockwise.circle.fill"
-    } else { // reset
-
-    }
+    state = updateStateOnStopButtonAction(timerRunning: state.timerRunning,
+                                          maxTime: state.maxTime,
+                                          currentTime: state.currentTime)
   }
 
   var body: some View {
     let timerToolbarParams = TimerToolbarParams(
       playCallback: toolbarPlayButtonAction,
       stopCallback: toolbarStopButtonAction,
-      playImageSystemName: toolbarPlayImageName,
-      stopImageSystemName: toolbarStopImageName)
+      playImageSystemName: state.toolbarPlayImageName,
+      stopImageSystemName: state.toolbarStopImageName)
 
     return VStack {
-      Text("Big Timer")
+      CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 240, font: .largeTitle))
       List {
-        Text("Yo")
+        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 210, font: .title))
+        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 30, font: .title))
       }
       TimerToolbar(params: timerToolbarParams)
     }
