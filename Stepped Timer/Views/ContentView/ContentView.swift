@@ -35,10 +35,10 @@ struct ContentView: View {
       stopImageSystemName: state.toolbarStopImageName)
 
     return VStack {
-      CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 240, font: .largeTitle))
+      CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 240.0, font: .largeTitle))
       List {
-        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 210, font: .title))
-        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 30, font: .title))
+        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 210.0, font: .title))
+        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 30.0, font: .title))
       }
       TimerToolbar(params: timerToolbarParams)
     }
