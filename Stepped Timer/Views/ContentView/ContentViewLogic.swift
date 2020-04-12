@@ -8,32 +8,32 @@
 
 import Foundation
 
-func updateStateOnPlayButtonAction(timerRunning: Bool, maxTime: TimeInterval, currentTime: TimeInterval) -> ContentViewState {
+func updateStateOnPlayButtonAction(timerRunning: Bool, maxTimes: [TimeInterval], currentTimes: [TimeInterval]) -> ContentViewState {
   if (timerRunning) {
-    return ContentViewState(maxTime: maxTime,
-                            currentTime: currentTime,
+    return ContentViewState(maxTimes: maxTimes,
+                            currentTimes: currentTimes,
                             timerRunning: false,
                             toolbarPlayImageName: "play.fill",
                             toolbarStopImageName: "arrow.clockwise.circle.fill")
   } else {
-    return ContentViewState(maxTime: maxTime,
-                            currentTime: currentTime,
+    return ContentViewState(maxTimes: maxTimes,
+                            currentTimes: currentTimes,
                             timerRunning: true,
                             toolbarPlayImageName: "pause",
                             toolbarStopImageName: "stop.fill")
   }
 }
 
-func updateStateOnStopButtonAction(timerRunning: Bool, maxTime: TimeInterval, currentTime: TimeInterval) -> ContentViewState {
+func updateStateOnStopButtonAction(timerRunning: Bool, maxTimes: [TimeInterval], currentTimes: [TimeInterval]) -> ContentViewState {
   if (timerRunning) {
-    return ContentViewState(maxTime: maxTime,
-                            currentTime: currentTime,
+    return ContentViewState(maxTimes: maxTimes,
+                            currentTimes: currentTimes,
                             timerRunning: false,
                             toolbarPlayImageName: "play.fill",
                             toolbarStopImageName: "arrow.clockwise.circle.fill")
   } else {
-    return ContentViewState(maxTime: maxTime,
-                            currentTime: maxTime,
+    return ContentViewState(maxTimes: maxTimes,
+                            currentTimes: maxTimes,
                             timerRunning: false,
                             toolbarPlayImageName: "play.fill",
                             toolbarStopImageName: "arrow.clockwise.circle.fill")

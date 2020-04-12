@@ -9,22 +9,22 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State var state = ContentViewState(maxTime: 0,
-                                      currentTime: 0,
+  @State var state = ContentViewState(maxTimes: [0.0],
+                                      currentTimes: [0.0],
                                       timerRunning: false,
                                       toolbarPlayImageName: "play.fill",
                                       toolbarStopImageName: "arrow.clockwise.circle.fill")
 
   private func toolbarPlayButtonAction() {
     state = updateStateOnPlayButtonAction(timerRunning: state.timerRunning,
-                                          maxTime: state.maxTime,
-                                          currentTime: state.currentTime)
+                                          maxTimes: state.maxTimes,
+                                          currentTimes: state.currentTimes)
   }
 
   private func toolbarStopButtonAction() {
     state = updateStateOnStopButtonAction(timerRunning: state.timerRunning,
-                                          maxTime: state.maxTime,
-                                          currentTime: state.currentTime)
+                                          maxTimes: state.maxTimes,
+                                          currentTimes: state.currentTimes)
   }
 
   var body: some View {

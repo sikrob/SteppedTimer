@@ -9,8 +9,8 @@
 import Foundation
 
 struct ContentViewState {
-  var maxTime: TimeInterval
-  var currentTime: TimeInterval
+  var maxTimes: [TimeInterval]
+  var currentTimes: [TimeInterval]
   var timerRunning: Bool
   var toolbarPlayImageName: String
   var toolbarStopImageName: String
