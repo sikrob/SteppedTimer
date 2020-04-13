@@ -9,22 +9,20 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State var state = ContentViewState(maxTimes: [0.0],
-                                      currentTimes: [0.0],
+  @State var state = ContentViewState(timerTimes: [TimerTime(maxTime: 10.0, currentTime: 10.0),
+                                                   TimerTime(maxTime: 20.0, currentTime: 20.0)],
                                       timerRunning: false,
                                       toolbarPlayImageName: "play.fill",
                                       toolbarStopImageName: "arrow.clockwise.circle.fill")
 
   private func toolbarPlayButtonAction() {
     state = updateStateOnPlayButtonAction(timerRunning: state.timerRunning,
-                                          maxTimes: state.maxTimes,
-                                          currentTimes: state.currentTimes)
+                                          timerTimes: state.timerTimes)
   }
 
   private func toolbarStopButtonAction() {
     state = updateStateOnStopButtonAction(timerRunning: state.timerRunning,
-                                          maxTimes: state.maxTimes,
-                                          currentTimes: state.currentTimes)
+                                          timerTimes: state.timerTimes)
   }
 
   var body: some View {
@@ -34,11 +32,20 @@ struct ContentView: View {
       playImageSystemName: state.toolbarPlayImageName,
       stopImageSystemName: state.toolbarStopImageName)
 
+    let currentTotalTime = state.timerTimes.map({ (timerTime: TimerTime) -> TimeInterval in
+      return timerTime.currentTime
+    }).reduce(0.0, { (cumulativeTime: TimeInterval, nextTime: TimeInterval) -> TimeInterval in
+      return cumulativeTime + nextTime
+    })
+
     return VStack {
-      CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 240.0, font: .largeTitle))
-      List {
-        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 210.0, font: .title))
-        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 30.0, font: .title))
+      CountdownTimerText(params: CountdownTimerTextParams(timeInterval: currentTotalTime, font: .largeTitle))
+//      List {
+//        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 210.0, font: .title))
+//        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 30.0, font: .title))
+//      }
+      List(state.timerTimes) { timerTime in
+        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: timerTime.currentTime, font: .title))
       }
       TimerToolbar(params: timerToolbarParams)
     }
