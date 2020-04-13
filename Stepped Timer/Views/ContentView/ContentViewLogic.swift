@@ -8,32 +8,32 @@
 
 import Foundation
 
-func updateStateOnPlayButtonAction(timerRunning: Bool, timerTimes: [TimerTime]) -> ContentViewState {
+func updateStateOnPlayButtonAction(timerRunning: Bool, timerTimeSteps: [TimerTimeStep]) -> ContentViewState {
   if (timerRunning) {
-    return ContentViewState(timerTimes: timerTimes,
+    return ContentViewState(timerTimeSteps: timerTimeSteps,
                             timerRunning: false,
                             toolbarPlayImageName: "play.fill",
                             toolbarStopImageName: "arrow.clockwise.circle.fill")
   } else {
-    return ContentViewState(timerTimes: timerTimes,
+    return ContentViewState(timerTimeSteps: timerTimeSteps,
                             timerRunning: true,
                             toolbarPlayImageName: "pause",
                             toolbarStopImageName: "stop.fill")
   }
 }
 
-func updateStateOnStopButtonAction(timerRunning: Bool, timerTimes: [TimerTime]) -> ContentViewState {
+func updateStateOnStopButtonAction(timerRunning: Bool, timerTimeSteps: [TimerTimeStep]) -> ContentViewState {
   if (timerRunning) {
-    return ContentViewState(timerTimes: timerTimes,
+    return ContentViewState(timerTimeSteps: timerTimeSteps,
                             timerRunning: false,
                             toolbarPlayImageName: "play.fill",
                             toolbarStopImageName: "arrow.clockwise.circle.fill")
   } else {
-    let resetTimerTimes = timerTimes.map({ (timerTime: TimerTime) -> TimerTime in
-      return TimerTime(maxTime: timerTime.maxTime, currentTime: timerTime.maxTime)
+    let resetTimerTimeSteps = timerTimeSteps.map({ (timerTimeStep: TimerTimeStep) -> TimerTimeStep in
+      return TimerTimeStep(maxTime: timerTimeStep.maxTime, currentTime: timerTimeStep.maxTime)
     })
 
-    return ContentViewState(timerTimes: resetTimerTimes,
+    return ContentViewState(timerTimeSteps: resetTimerTimeSteps,
                             timerRunning: false,
                             toolbarPlayImageName: "play.fill",
                             toolbarStopImageName: "arrow.clockwise.circle.fill")
