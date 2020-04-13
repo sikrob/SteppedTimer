@@ -40,10 +40,6 @@ struct ContentView: View {
 
     return VStack {
       CountdownTimerText(params: CountdownTimerTextParams(timeInterval: currentTotalTime, font: .largeTitle))
-//      List {
-//        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 210.0, font: .title))
-//        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: 30.0, font: .title))
-//      }
       List(state.timerTimes) { timerTime in
         CountdownTimerText(params: CountdownTimerTextParams(timeInterval: timerTime.currentTime, font: .title))
       }
