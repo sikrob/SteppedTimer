@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ContentView: View {
+  @Environment(\.managedObjectContext) var context
+
   @State var state = ContentViewState(timerTimeSteps: [TimerTimeStep(maxTime: 10.0, currentTime: 10.0),
                                                    TimerTimeStep(maxTime: 20.0, currentTime: 20.0)],
                                       timerRunning: false,
