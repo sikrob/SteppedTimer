@@ -30,7 +30,7 @@ func updateStateOnStopButtonAction(timerRunning: Bool, timerTimeSteps: [TimerTim
                             toolbarStopImageName: "arrow.clockwise.circle.fill")
   } else {
     let resetTimerTimeSteps = timerTimeSteps.map({ (timerTimeStep: TimerTimeStep) -> TimerTimeStep in
-      return TimerTimeStep(maxTime: timerTimeStep.maxTime, currentTime: timerTimeStep.maxTime)
+      return TimerTimeStep(id: timerTimeStep.id, maxTime: timerTimeStep.maxTime, currentTime: timerTimeStep.maxTime)
     })
 
     return ContentViewState(timerTimeSteps: resetTimerTimeSteps,

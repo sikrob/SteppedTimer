@@ -9,7 +9,7 @@
 import Foundation
 
 struct TimerTimeStep: Identifiable, Equatable {
-  var id = UUID()
+  var id: UUID
   var maxTime: TimeInterval
   var currentTime: TimeInterval
 

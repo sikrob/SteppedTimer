@@ -11,11 +11,12 @@ import SwiftUI
 struct ContentView: View {
   @Environment(\.managedObjectContext) var context
 
-  @State var state = ContentViewState(timerTimeSteps: [TimerTimeStep(maxTime: 10.0, currentTime: 10.0),
-                                                   TimerTimeStep(maxTime: 20.0, currentTime: 20.0)],
-                                      timerRunning: false,
-                                      toolbarPlayImageName: "play.fill",
-                                      toolbarStopImageName: "arrow.clockwise.circle.fill")
+  @State var state = ContentViewState(
+    timerTimeSteps: [TimerTimeStep(id: UUID(), maxTime: 10.0, currentTime: 10.0),
+                     TimerTimeStep(id: UUID(), maxTime: 20.0, currentTime: 20.0)],
+    timerRunning: false,
+    toolbarPlayImageName: "play.fill",
+    toolbarStopImageName: "arrow.clockwise.circle.fill")
 
   private func toolbarPlayButtonAction() {
     state = updateStateOnPlayButtonAction(timerRunning: state.timerRunning,
