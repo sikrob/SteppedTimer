@@ -7,13 +7,15 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
   @Environment(\.managedObjectContext) var context
 
   @State var state = ContentViewState(
-    timerTimeSteps: [TimerTimeStep(id: UUID(), maxTime: 10.0, currentTime: 10.0),
-                     TimerTimeStep(id: UUID(), maxTime: 20.0, currentTime: 20.0)],
+//    timerTimeSteps: [TimerTimeStep(id: UUID(), maxTime: 10.0, currentTime: 10.0),
+//                     TimerTimeStep(id: UUID(), maxTime: 20.0, currentTime: 20.0)],
+    timerTimeSteps: [],
     timerRunning: false,
     toolbarPlayImageName: "play.fill",
     toolbarStopImageName: "arrow.clockwise.circle.fill")
@@ -26,6 +28,20 @@ struct ContentView: View {
   private func toolbarStopButtonAction() {
     state = updateStateOnStopButtonAction(timerRunning: state.timerRunning,
                                           timerTimeSteps: state.timerTimeSteps)
+  }
+
+  private func addStep() {
+    let newTimerTime = TimerTime(context: context)
+    newTimerTime.id = UUID()
+    newTimerTime.maxTime = 10.0
+    newTimerTime.currentTime = 10.0
+    newTimerTime.step = Int16(state.timerTimeSteps.count)
+
+    do {
+      try context.save()
+    } catch {
+      print(error)
+    }
   }
 
   var body: some View {
@@ -45,6 +61,9 @@ struct ContentView: View {
       CountdownTimerText(params: CountdownTimerTextParams(timeInterval: currentTotalTime, font: .largeTitle))
       List(state.timerTimeSteps) { timerTimeStep in
         CountdownTimerText(params: CountdownTimerTextParams(timeInterval: timerTimeStep.currentTime, font: .title))
+      }
+      Button(action: self.addStep) {
+        Text("New")
       }
       TimerToolbar(params: timerToolbarParams)
     }

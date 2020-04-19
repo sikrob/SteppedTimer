@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		E1146F15243C07C000A87DC1 /* ContentViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1146F14243C07C000A87DC1 /* ContentViewState.swift */; };
 		E1146F18243C099A00A87DC1 /* ContentViewLogic_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1146F17243C099A00A87DC1 /* ContentViewLogic_Tests.swift */; };
-		E12829D92444D78D00E7BF54 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E12829D72444D78D00E7BF54 /* Model.xcdatamodeld */; };
+		E17BEEB1244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E17BEEAF244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld */; };
+		E17BEEB3244C0F0F00A6D6D0 /* TimerTime+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BEEB2244C0F0F00A6D6D0 /* TimerTime+Extensions.swift */; };
 		E1B8CC962443DCA20000C409 /* TimerTimeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8CC952443DCA20000C409 /* TimerTimeStep.swift */; };
 		E1CB2C882426F44E00C8D5A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2C872426F44E00C8D5A0 /* AppDelegate.swift */; };
 		E1CB2C8A2426F44E00C8D5A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2C892426F44E00C8D5A0 /* SceneDelegate.swift */; };
-		E1CB2C8D2426F44E00C8D5A0 /* Stepped_Timer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2C8B2426F44E00C8D5A0 /* Stepped_Timer.xcdatamodeld */; };
 		E1CB2C8F2426F44E00C8D5A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2C8E2426F44E00C8D5A0 /* ContentView.swift */; };
 		E1CB2C912426F44F00C8D5A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CB2C902426F44F00C8D5A0 /* Assets.xcassets */; };
 		E1CB2C942426F44F00C8D5A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CB2C932426F44F00C8D5A0 /* Preview Assets.xcassets */; };
@@ -49,12 +49,12 @@
 /* Begin PBXFileReference section */
 		E1146F14243C07C000A87DC1 /* ContentViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewState.swift; sourceTree = "<group>"; };
 		E1146F17243C099A00A87DC1 /* ContentViewLogic_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLogic_Tests.swift; sourceTree = "<group>"; };
-		E12829D82444D78D00E7BF54 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		E17BEEB0244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SteppedTimer.xcdatamodel; sourceTree = "<group>"; };
+		E17BEEB2244C0F0F00A6D6D0 /* TimerTime+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimerTime+Extensions.swift"; sourceTree = "<group>"; };
 		E1B8CC952443DCA20000C409 /* TimerTimeStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTimeStep.swift; sourceTree = "<group>"; };
 		E1CB2C842426F44E00C8D5A0 /* Stepped Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stepped Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CB2C872426F44E00C8D5A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1CB2C892426F44E00C8D5A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E1CB2C8C2426F44E00C8D5A0 /* Stepped_Timer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stepped_Timer.xcdatamodel; sourceTree = "<group>"; };
 		E1CB2C8E2426F44E00C8D5A0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E1CB2C902426F44F00C8D5A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1CB2C932426F44F00C8D5A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -111,7 +111,8 @@
 		E12829D62444D56900E7BF54 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				E12829D72444D78D00E7BF54 /* Model.xcdatamodeld */,
+				E17BEEAF244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld */,
+				E17BEEB2244C0F0F00A6D6D0 /* TimerTime+Extensions.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -155,7 +156,6 @@
 				E1CB2C902426F44F00C8D5A0 /* Assets.xcassets */,
 				E1CB2C952426F44F00C8D5A0 /* LaunchScreen.storyboard */,
 				E1CB2C982426F44F00C8D5A0 /* Info.plist */,
-				E1CB2C8B2426F44E00C8D5A0 /* Stepped_Timer.xcdatamodeld */,
 				E1CB2C922426F44F00C8D5A0 /* Preview Content */,
 			);
 			path = "Stepped Timer";
@@ -377,16 +377,16 @@
 			files = (
 				E1CB2C882426F44E00C8D5A0 /* AppDelegate.swift in Sources */,
 				E1CB2CCE2427BC2600C8D5A0 /* CountdownTimerText.swift in Sources */,
-				E1CB2C8D2426F44E00C8D5A0 /* Stepped_Timer.xcdatamodeld in Sources */,
 				E1146F15243C07C000A87DC1 /* ContentViewState.swift in Sources */,
+				E17BEEB1244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld in Sources */,
 				E1CB2CD32427BEA900C8D5A0 /* CountdownTimerTextLogic.swift in Sources */,
 				E1CB2C8F2426F44E00C8D5A0 /* ContentView.swift in Sources */,
 				E1CB2CC42427156900C8D5A0 /* TimerToolbar.swift in Sources */,
 				E1CB2CC924271CFF00C8D5A0 /* ContentViewLogic.swift in Sources */,
+				E17BEEB3244C0F0F00A6D6D0 /* TimerTime+Extensions.swift in Sources */,
 				E1CB2C8A2426F44E00C8D5A0 /* SceneDelegate.swift in Sources */,
 				E1CB2CD12427BDE600C8D5A0 /* CountdownTimerTextParams.swift in Sources */,
 				E1B8CC962443DCA20000C409 /* TimerTimeStep.swift in Sources */,
-				E12829D92444D78D00E7BF54 /* Model.xcdatamodeld in Sources */,
 				E1CB2CC2242712F600C8D5A0 /* TimerToolbarParams.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -716,23 +716,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E12829D72444D78D00E7BF54 /* Model.xcdatamodeld */ = {
+		E17BEEAF244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E12829D82444D78D00E7BF54 /* Model.xcdatamodel */,
+				E17BEEB0244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodel */,
 			);
-			currentVersion = E12829D82444D78D00E7BF54 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		E1CB2C8B2426F44E00C8D5A0 /* Stepped_Timer.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E1CB2C8C2426F44E00C8D5A0 /* Stepped_Timer.xcdatamodel */,
-			);
-			currentVersion = E1CB2C8C2426F44E00C8D5A0 /* Stepped_Timer.xcdatamodel */;
-			path = Stepped_Timer.xcdatamodeld;
+			currentVersion = E17BEEB0244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodel */;
+			path = SteppedTimer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
