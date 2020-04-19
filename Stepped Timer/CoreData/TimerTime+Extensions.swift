@@ -7,7 +7,12 @@
 //
 
 import Foundation
+import CoreData
 
 extension TimerTime: Identifiable {
-  
+//  static func fetchAll() -> NSFetchRequest<TimerTime> {
+//    let request: NSFetchRequest<TimerTime> = TimerTime.fetchRequest() as! NSFetchRequest<TimerTime>
+//    request.sortDescriptors = [NSSortDescriptor(key: "stepNumber", ascending: true)]
+//    return request
+//  }
 }

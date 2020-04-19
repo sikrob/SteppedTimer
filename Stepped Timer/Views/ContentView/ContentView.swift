@@ -12,6 +12,11 @@ import CoreData
 struct ContentView: View {
   @Environment(\.managedObjectContext) var context
 
+  @FetchRequest(
+    entity: TimerTime.entity(),
+    sortDescriptors: [NSSortDescriptor(key: "stepNumber", ascending: true)]
+  ) var allTimerTimes: FetchedResults<TimerTime>
+
   @State var state = ContentViewState(
 //    timerTimeSteps: [TimerTimeStep(id: UUID(), maxTime: 10.0, currentTime: 10.0),
 //                     TimerTimeStep(id: UUID(), maxTime: 20.0, currentTime: 20.0)],
@@ -35,7 +40,7 @@ struct ContentView: View {
     newTimerTime.id = UUID()
     newTimerTime.maxTime = 10.0
     newTimerTime.currentTime = 10.0
-    newTimerTime.step = Int16(state.timerTimeSteps.count)
+    newTimerTime.stepNumber = Int16(state.timerTimeSteps.count)
 
     do {
       try context.save()
@@ -59,8 +64,8 @@ struct ContentView: View {
 
     return VStack {
       CountdownTimerText(params: CountdownTimerTextParams(timeInterval: currentTotalTime, font: .largeTitle))
-      List(state.timerTimeSteps) { timerTimeStep in
-        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: timerTimeStep.currentTime, font: .title))
+      List(allTimerTimes) { timerTime in
+        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: timerTime.currentTime, font: .title))
       }
       Button(action: self.addStep) {
         Text("New")
