@@ -7,6 +7,27 @@
 //
 
 import Foundation
+import SwiftUI
+import CoreData
+
+func resetTimerTimeStepsFromTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>) -> [TimerTimeStep] {
+  return sortedTimerTimes.map({ (timerTime: TimerTime) -> TimerTimeStep in
+    return TimerTimeStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: timerTime.maxTime)
+  })
+}
+
+func timerTimeStepsFromTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>, currentTimes: [TimeInterval]) -> [TimerTimeStep] {
+  return sortedTimerTimes.enumerated().map({ (index: Int, timerTime: TimerTime) -> TimerTimeStep in
+    let currentTime = index < currentTimes.count ? currentTimes[index] : timerTime.maxTime
+    return TimerTimeStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: currentTime)
+  })
+}
+
+func stateTimerTimeStepsFromTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>) -> [TimerTimeStep] {
+  return sortedTimerTimes.map({ (timerTime: TimerTime) -> TimerTimeStep in
+    return TimerTimeStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: timerTime.currentTime)
+  })
+}
 
 func updateStateOnPlayButtonAction(timerRunning: Bool, timerTimeSteps: [TimerTimeStep]) -> ContentViewState {
   if (timerRunning) {

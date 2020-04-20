@@ -18,8 +18,6 @@ struct ContentView: View {
   ) var allTimerTimes: FetchedResults<TimerTime>
 
   @State var state = ContentViewState(
-//    timerTimeSteps: [TimerTimeStep(id: UUID(), maxTime: 10.0, currentTime: 10.0),
-//                     TimerTimeStep(id: UUID(), maxTime: 20.0, currentTime: 20.0)],
     timerTimeSteps: [],
     timerRunning: false,
     toolbarPlayImageName: "play.fill",
@@ -36,14 +34,19 @@ struct ContentView: View {
   }
 
   private func addStep() {
+    let stepNumber = Int16(allTimerTimes.count)
     let newTimerTime = TimerTime(context: context)
     newTimerTime.id = UUID()
     newTimerTime.maxTime = 10.0
     newTimerTime.currentTime = 10.0
-    newTimerTime.stepNumber = Int16(state.timerTimeSteps.count)
+    newTimerTime.stepNumber = stepNumber
 
     do {
       try context.save()
+      let currentTimes = state.timerTimeSteps.map({ (timerTimeStep: TimerTimeStep) -> TimeInterval in
+        return timerTimeStep.currentTime
+      })
+      state.timerTimeSteps = timerTimeStepsFromTimerTimes(sortedTimerTimes: allTimerTimes, currentTimes: currentTimes)
     } catch {
       print(error)
     }
@@ -56,8 +59,8 @@ struct ContentView: View {
       playImageSystemName: state.toolbarPlayImageName,
       stopImageSystemName: state.toolbarStopImageName)
 
-    let currentTotalTime = state.timerTimeSteps.map({ (timerTimeStep: TimerTimeStep) -> TimeInterval in
-      return timerTimeStep.currentTime
+    let currentTotalTime = allTimerTimes.map({ (timerTime) -> TimeInterval in
+      return timerTime.currentTime
     }).reduce(0.0, { (cumulativeTime: TimeInterval, nextTime: TimeInterval) -> TimeInterval in
       return cumulativeTime + nextTime
     })
