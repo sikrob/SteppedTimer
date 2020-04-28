@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct CountdownTimerTextParams {
+  var timerRunning: Bool
   var timeInterval: TimeInterval
   var font: Font
 }

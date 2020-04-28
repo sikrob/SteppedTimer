@@ -25,7 +25,7 @@ struct CountdownTimerText: View {
 struct CountdownTimerText_Previews: PreviewProvider {
   static var previews: some View {
     let countdownTimerTextParams = CountdownTimerTextParams(
-      timeInterval: 1267.31, font: .largeTitle
+      timerRunning: false, timeInterval: 1267.31, font: .largeTitle
     )
     return CountdownTimerText(params: countdownTimerTextParams)
   }

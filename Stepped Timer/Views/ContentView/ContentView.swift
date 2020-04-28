@@ -23,14 +23,34 @@ struct ContentView: View {
     toolbarPlayImageName: "play.fill",
     toolbarStopImageName: "arrow.clockwise.circle.fill")
 
+  @State var timerAction: Timer? = nil
+  @State var testTime: TimeInterval = 1.0
+
+  private func updateTimer() {
+    if timerAction == nil {
+      let runLoop = CFRunLoopGetCurrent()
+      timerAction = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { (Timer) -> Void in
+        print("running self.testTime \(self.testTime)")
+        if (self.testTime > 0) {
+          self.testTime -= 0.1
+        } else {
+          CFRunLoopRemoveTimer(runLoop, self.timerAction, CFRunLoopMode.commonModes)
+        }
+      })
+      CFRunLoopAddTimer(runLoop, timerAction, CFRunLoopMode.commonModes)
+    }
+  }
+
   private func toolbarPlayButtonAction() {
     state = updateStateOnPlayButtonAction(timerRunning: state.timerRunning,
                                           timerTimeSteps: state.timerTimeSteps)
+    updateTimer()
   }
 
   private func toolbarStopButtonAction() {
     state = updateStateOnStopButtonAction(timerRunning: state.timerRunning,
                                           timerTimeSteps: state.timerTimeSteps)
+    testTime = 1.0
   }
 
   private func addStep() {
@@ -66,15 +86,29 @@ struct ContentView: View {
     })
 
     return VStack {
-      CountdownTimerText(params: CountdownTimerTextParams(timeInterval: currentTotalTime, font: .largeTitle))
+      CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: currentTotalTime, font: .largeTitle))
       List(allTimerTimes) { timerTime in
-        CountdownTimerText(params: CountdownTimerTextParams(timeInterval: timerTime.currentTime, font: .title))
+        CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: timerTime.currentTime, font: .title))
       }
+      Text("\(testTime)")
       Button(action: self.addStep) {
         Text("New")
       }
       TimerToolbar(params: timerToolbarParams)
     }
+
+    /* New Plan
+
+     VStack {
+      CoundownUi(allSteps) -> produce a state based on steps param; state incl currentTimes
+        CTText big currentTimes
+        List -> CTText lessBig currentTime of step
+             -> Delete Buttons
+             -> plus Add New -> Button(addStepCallback?)...
+      TimerToolbar(...)
+     }
+
+     */
   }
 }
 
