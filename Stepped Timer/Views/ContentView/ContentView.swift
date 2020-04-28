@@ -18,46 +18,57 @@ struct ContentView: View {
   ) var allTimerTimes: FetchedResults<TimerTime>
 
   @State var timer: Timer? = nil
-//  @State var timerSteps: 
-
-
-  @State var state = ContentViewState(
-    timer: nil,
-    timerSteps: [],
-    timerRunning: false,
-    toolbarPlayImageName: "play.fill",
-    toolbarStopImageName: "arrow.clockwise.circle.fill")
+  @State var timerSteps: [TimerStep] = []
+  @State var timerRunning: Bool = false
+  @State var toolbarPlayImageName: String = "play.fill"
+  @State var toolbarStopImageName: String = "arrow.clockwise.circle.fill"
 
   @State var timerAction: Timer? = nil
 
-  @State var testTime: TimeInterval = 1.0
+  @State var testTime: TimeInterval = 10.0
 
   private func updateTimer() {
-    if state.timer == nil {
-      let runLoop = CFRunLoopGetCurrent()
-      state.timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { (Timer) -> Void in
+    let runLoop = CFRunLoopGetCurrent()
+
+    if timer == nil {
+      timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { (Timer) -> Void in
         print("running self.testTime \(self.testTime)")
         if (self.testTime > 0) {
           self.testTime -= 0.1
         } else {
-          CFRunLoopRemoveTimer(runLoop, self.state.timer, CFRunLoopMode.commonModes)
-          self.state.timer = nil
+          CFRunLoopRemoveTimer(runLoop, self.timer, CFRunLoopMode.commonModes)
+          self.timer = nil
         }
       })
-      CFRunLoopAddTimer(runLoop, state.timer, CFRunLoopMode.commonModes)
+      CFRunLoopAddTimer(runLoop, timer, CFRunLoopMode.commonModes)
+    } else if (!timerRunning) {
+      CFRunLoopRemoveTimer(runLoop, timer, CFRunLoopMode.commonModes)
+    } else {
+      CFRunLoopAddTimer(runLoop, timer, CFRunLoopMode.commonModes)
     }
   }
 
+  private func stopTimer() {
+    let runLoop = CFRunLoopGetCurrent()
+    CFRunLoopRemoveTimer(runLoop, timer, CFRunLoopMode.commonModes)
+    timerRunning = false
+  }
+
   private func toolbarPlayButtonAction() {
-    state = updateStateOnPlayButtonAction(timerRunning: state.timerRunning,
-                                          timerSteps: state.timerSteps)
+    timerRunning = !timerRunning
+    toolbarPlayImageName = toolbarPlayImageNameForTimerRunning(timerRunning)
+    toolbarStopImageName = toolbarStopImageNameForTimerRunning(timerRunning)
     updateTimer()
   }
 
   private func toolbarStopButtonAction() {
-    state = updateStateOnStopButtonAction(timerRunning: state.timerRunning,
-                                          timerSteps: state.timerSteps)
-    testTime = 1.0
+    timerRunning = false
+    toolbarPlayImageName = toolbarPlayImageNameForTimerRunning(timerRunning)
+    toolbarStopImageName = toolbarStopImageNameForTimerRunning(timerRunning)
+    stopTimer()
+    // reset timer times
+
+    testTime = 10.0
   }
 
   private func addStep() {
@@ -70,10 +81,10 @@ struct ContentView: View {
 
     do {
       try context.save()
-      let currentTimes = state.timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
+      let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
         return timerStep.currentTime
       })
-      state.timerSteps = timerStepsFromTimerTimes(sortedTimerTimes: allTimerTimes, currentTimes: currentTimes)
+      timerSteps = timerStepsFromTimerTimes(sortedTimerTimes: allTimerTimes, currentTimes: currentTimes)
     } catch {
       print(error)
     }
@@ -83,8 +94,8 @@ struct ContentView: View {
     let timerToolbarParams = TimerToolbarParams(
       playCallback: toolbarPlayButtonAction,
       stopCallback: toolbarStopButtonAction,
-      playImageSystemName: state.toolbarPlayImageName,
-      stopImageSystemName: state.toolbarStopImageName)
+      playImageSystemName: toolbarPlayImageName,
+      stopImageSystemName: toolbarStopImageName)
 
     let currentTotalTime = allTimerTimes.map({ (timerTime) -> TimeInterval in
       return timerTime.currentTime

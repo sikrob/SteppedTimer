@@ -13,7 +13,7 @@
 		E16583A4244E7E2F00AD4105 /* CountdownUiParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16583A3244E7E2F00AD4105 /* CountdownUiParams.swift */; };
 		E17BEEB1244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E17BEEAF244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld */; };
 		E17BEEB3244C0F0F00A6D6D0 /* TimerTime+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BEEB2244C0F0F00A6D6D0 /* TimerTime+Extensions.swift */; };
-		E1B8CC962443DCA20000C409 /* TimerTimeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8CC952443DCA20000C409 /* TimerTimeStep.swift */; };
+		E1B8CC962443DCA20000C409 /* TimerStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8CC952443DCA20000C409 /* TimerStep.swift */; };
 		E1CB2C882426F44E00C8D5A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2C872426F44E00C8D5A0 /* AppDelegate.swift */; };
 		E1CB2C8A2426F44E00C8D5A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2C892426F44E00C8D5A0 /* SceneDelegate.swift */; };
 		E1CB2C8F2426F44E00C8D5A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2C8E2426F44E00C8D5A0 /* ContentView.swift */; };
@@ -55,7 +55,7 @@
 		E16583A3244E7E2F00AD4105 /* CountdownUiParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownUiParams.swift; sourceTree = "<group>"; };
 		E17BEEB0244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SteppedTimer.xcdatamodel; sourceTree = "<group>"; };
 		E17BEEB2244C0F0F00A6D6D0 /* TimerTime+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimerTime+Extensions.swift"; sourceTree = "<group>"; };
-		E1B8CC952443DCA20000C409 /* TimerTimeStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTimeStep.swift; sourceTree = "<group>"; };
+		E1B8CC952443DCA20000C409 /* TimerStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStep.swift; sourceTree = "<group>"; };
 		E1CB2C842426F44E00C8D5A0 /* Stepped Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stepped Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CB2C872426F44E00C8D5A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1CB2C892426F44E00C8D5A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 		E1B8CC942443DC7C0000C409 /* Shared Structs */ = {
 			isa = PBXGroup;
 			children = (
-				E1B8CC952443DCA20000C409 /* TimerTimeStep.swift */,
+				E1B8CC952443DCA20000C409 /* TimerStep.swift */,
 			);
 			path = "Shared Structs";
 			sourceTree = "<group>";
@@ -402,7 +402,7 @@
 				E17BEEB3244C0F0F00A6D6D0 /* TimerTime+Extensions.swift in Sources */,
 				E1CB2C8A2426F44E00C8D5A0 /* SceneDelegate.swift in Sources */,
 				E1CB2CD12427BDE600C8D5A0 /* CountdownTimerTextParams.swift in Sources */,
-				E1B8CC962443DCA20000C409 /* TimerTimeStep.swift in Sources */,
+				E1B8CC962443DCA20000C409 /* TimerStep.swift in Sources */,
 				E1CB2CC2242712F600C8D5A0 /* TimerToolbarParams.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

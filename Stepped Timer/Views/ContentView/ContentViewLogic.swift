@@ -29,34 +29,28 @@ func stateTimerStepsFromTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>) 
   })
 }
 
-func updateStateOnPlayButtonAction(timerRunning: Bool, timerSteps: [TimerStep]) -> ContentViewState {
-  if (timerRunning) {
-    return ContentViewState(timerSteps: timerSteps,
-                            timerRunning: false,
-                            toolbarPlayImageName: "play.fill",
-                            toolbarStopImageName: "arrow.clockwise.circle.fill")
-  } else {
-    return ContentViewState(timerSteps: timerSteps,
-                            timerRunning: true,
-                            toolbarPlayImageName: "pause",
-                            toolbarStopImageName: "stop.fill")
-  }
+func toolbarPlayImageNameForTimerRunning(_ timerRunning: Bool) -> String {
+  return timerRunning ? "pause" : "play.fill"
 }
 
-func updateStateOnStopButtonAction(timerRunning: Bool, timerSteps: [TimerStep]) -> ContentViewState {
-  if (timerRunning) {
-    return ContentViewState(timerSteps: timerSteps,
-                            timerRunning: false,
-                            toolbarPlayImageName: "play.fill",
-                            toolbarStopImageName: "arrow.clockwise.circle.fill")
-  } else {
-    let resetTimerSteps = timerSteps.map({ (timerStep: TimerStep) -> TimerStep in
-      return TimerStep(id: timerStep.id, maxTime: timerStep.maxTime, currentTime: timerStep.maxTime)
-    })
-
-    return ContentViewState(timerSteps: resetTimerSteps,
-                            timerRunning: false,
-                            toolbarPlayImageName: "play.fill",
-                            toolbarStopImageName: "arrow.clockwise.circle.fill")
-  }
+func toolbarStopImageNameForTimerRunning(_ timerRunning: Bool) -> String {
+  return timerRunning ? "stop.fill" : "arrow.clockwise.circle.fill"
 }
+
+//func updateStateOnStopButtonAction(timerRunning: Bool, timerSteps: [TimerStep]) -> ContentViewState {
+//  if (timerRunning) {
+//    return ContentViewState(timerSteps: timerSteps,
+//                            timerRunning: false,
+//                            toolbarPlayImageName: "play.fill",
+//                            toolbarStopImageName: "arrow.clockwise.circle.fill")
+//  } else {
+//    let resetTimerSteps = timerSteps.map({ (timerStep: TimerStep) -> TimerStep in
+//      return TimerStep(id: timerStep.id, maxTime: timerStep.maxTime, currentTime: timerStep.maxTime)
+//    })
+//
+//    return ContentViewState(timerSteps: resetTimerSteps,
+//                            timerRunning: false,
+//                            toolbarPlayImageName: "play.fill",
+//                            toolbarStopImageName: "arrow.clockwise.circle.fill")
+//  }
+//}
