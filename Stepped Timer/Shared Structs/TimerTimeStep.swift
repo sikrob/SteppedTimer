@@ -1,5 +1,5 @@
 //
-//  TimerTimeStep.swift
+//  TimerStep.swift
 //  Stepped Timer
 //
 //  Created by Robert Sikorski on 4/12/20.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct TimerTimeStep: Identifiable, Equatable {
+struct TimerStep: Identifiable, Equatable {
   var id: UUID
   var maxTime: TimeInterval
   var currentTime: TimeInterval
 
-  static func == (lhs: TimerTimeStep, rhs: TimerTimeStep) -> Bool {
+  static func == (lhs: TimerStep, rhs: TimerStep) -> Bool {
     return lhs.maxTime == rhs.maxTime && lhs.currentTime == rhs.currentTime
   }
 }

@@ -7,6 +7,6 @@
 //
 
 struct CountdownUiParams {
-  var sortedTimerTimeSteps: [TimerTimeStep]
+  var sortedTimerSteps: [TimerStep]
   
 }

@@ -9,7 +9,8 @@
 import Foundation
 
 struct ContentViewState {
-  var timerTimeSteps: [TimerTimeStep]
+  var timer: Timer?
+  var timerSteps: [TimerStep]
   var timerRunning: Bool
   var toolbarPlayImageName: String
   var toolbarStopImageName: String

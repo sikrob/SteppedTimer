@@ -17,39 +17,46 @@ struct ContentView: View {
     sortDescriptors: [NSSortDescriptor(key: "stepNumber", ascending: true)]
   ) var allTimerTimes: FetchedResults<TimerTime>
 
+  @State var timer: Timer? = nil
+//  @State var timerSteps: 
+
+
   @State var state = ContentViewState(
-    timerTimeSteps: [],
+    timer: nil,
+    timerSteps: [],
     timerRunning: false,
     toolbarPlayImageName: "play.fill",
     toolbarStopImageName: "arrow.clockwise.circle.fill")
 
   @State var timerAction: Timer? = nil
+
   @State var testTime: TimeInterval = 1.0
 
   private func updateTimer() {
-    if timerAction == nil {
+    if state.timer == nil {
       let runLoop = CFRunLoopGetCurrent()
-      timerAction = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { (Timer) -> Void in
+      state.timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { (Timer) -> Void in
         print("running self.testTime \(self.testTime)")
         if (self.testTime > 0) {
           self.testTime -= 0.1
         } else {
-          CFRunLoopRemoveTimer(runLoop, self.timerAction, CFRunLoopMode.commonModes)
+          CFRunLoopRemoveTimer(runLoop, self.state.timer, CFRunLoopMode.commonModes)
+          self.state.timer = nil
         }
       })
-      CFRunLoopAddTimer(runLoop, timerAction, CFRunLoopMode.commonModes)
+      CFRunLoopAddTimer(runLoop, state.timer, CFRunLoopMode.commonModes)
     }
   }
 
   private func toolbarPlayButtonAction() {
     state = updateStateOnPlayButtonAction(timerRunning: state.timerRunning,
-                                          timerTimeSteps: state.timerTimeSteps)
+                                          timerSteps: state.timerSteps)
     updateTimer()
   }
 
   private func toolbarStopButtonAction() {
     state = updateStateOnStopButtonAction(timerRunning: state.timerRunning,
-                                          timerTimeSteps: state.timerTimeSteps)
+                                          timerSteps: state.timerSteps)
     testTime = 1.0
   }
 
@@ -63,10 +70,10 @@ struct ContentView: View {
 
     do {
       try context.save()
-      let currentTimes = state.timerTimeSteps.map({ (timerTimeStep: TimerTimeStep) -> TimeInterval in
-        return timerTimeStep.currentTime
+      let currentTimes = state.timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
+        return timerStep.currentTime
       })
-      state.timerTimeSteps = timerTimeStepsFromTimerTimes(sortedTimerTimes: allTimerTimes, currentTimes: currentTimes)
+      state.timerSteps = timerStepsFromTimerTimes(sortedTimerTimes: allTimerTimes, currentTimes: currentTimes)
     } catch {
       print(error)
     }

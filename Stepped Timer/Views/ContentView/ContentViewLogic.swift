@@ -10,51 +10,51 @@ import Foundation
 import SwiftUI
 import CoreData
 
-func resetTimerTimeStepsFromTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>) -> [TimerTimeStep] {
-  return sortedTimerTimes.map({ (timerTime: TimerTime) -> TimerTimeStep in
-    return TimerTimeStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: timerTime.maxTime)
+func resetTimerStepsFromTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>) -> [TimerStep] {
+  return sortedTimerTimes.map({ (timerTime: TimerTime) -> TimerStep in
+    return TimerStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: timerTime.maxTime)
   })
 }
 
-func timerTimeStepsFromTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>, currentTimes: [TimeInterval]) -> [TimerTimeStep] {
-  return sortedTimerTimes.enumerated().map({ (index: Int, timerTime: TimerTime) -> TimerTimeStep in
+func timerStepsFromTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>, currentTimes: [TimeInterval]) -> [TimerStep] {
+  return sortedTimerTimes.enumerated().map({ (index: Int, timerTime: TimerTime) -> TimerStep in
     let currentTime = index < currentTimes.count ? currentTimes[index] : timerTime.maxTime
-    return TimerTimeStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: currentTime)
+    return TimerStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: currentTime)
   })
 }
 
-func stateTimerTimeStepsFromTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>) -> [TimerTimeStep] {
-  return sortedTimerTimes.map({ (timerTime: TimerTime) -> TimerTimeStep in
-    return TimerTimeStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: timerTime.currentTime)
+func stateTimerStepsFromTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>) -> [TimerStep] {
+  return sortedTimerTimes.map({ (timerTime: TimerTime) -> TimerStep in
+    return TimerStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: timerTime.currentTime)
   })
 }
 
-func updateStateOnPlayButtonAction(timerRunning: Bool, timerTimeSteps: [TimerTimeStep]) -> ContentViewState {
+func updateStateOnPlayButtonAction(timerRunning: Bool, timerSteps: [TimerStep]) -> ContentViewState {
   if (timerRunning) {
-    return ContentViewState(timerTimeSteps: timerTimeSteps,
+    return ContentViewState(timerSteps: timerSteps,
                             timerRunning: false,
                             toolbarPlayImageName: "play.fill",
                             toolbarStopImageName: "arrow.clockwise.circle.fill")
   } else {
-    return ContentViewState(timerTimeSteps: timerTimeSteps,
+    return ContentViewState(timerSteps: timerSteps,
                             timerRunning: true,
                             toolbarPlayImageName: "pause",
                             toolbarStopImageName: "stop.fill")
   }
 }
 
-func updateStateOnStopButtonAction(timerRunning: Bool, timerTimeSteps: [TimerTimeStep]) -> ContentViewState {
+func updateStateOnStopButtonAction(timerRunning: Bool, timerSteps: [TimerStep]) -> ContentViewState {
   if (timerRunning) {
-    return ContentViewState(timerTimeSteps: timerTimeSteps,
+    return ContentViewState(timerSteps: timerSteps,
                             timerRunning: false,
                             toolbarPlayImageName: "play.fill",
                             toolbarStopImageName: "arrow.clockwise.circle.fill")
   } else {
-    let resetTimerTimeSteps = timerTimeSteps.map({ (timerTimeStep: TimerTimeStep) -> TimerTimeStep in
-      return TimerTimeStep(id: timerTimeStep.id, maxTime: timerTimeStep.maxTime, currentTime: timerTimeStep.maxTime)
+    let resetTimerSteps = timerSteps.map({ (timerStep: TimerStep) -> TimerStep in
+      return TimerStep(id: timerStep.id, maxTime: timerStep.maxTime, currentTime: timerStep.maxTime)
     })
 
-    return ContentViewState(timerTimeSteps: resetTimerTimeSteps,
+    return ContentViewState(timerSteps: resetTimerSteps,
                             timerRunning: false,
                             toolbarPlayImageName: "play.fill",
                             toolbarStopImageName: "arrow.clockwise.circle.fill")
