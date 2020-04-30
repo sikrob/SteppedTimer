@@ -25,7 +25,7 @@ struct ContentView: View {
 
   @State var timerAction: Timer? = nil
 
-  // NOTE: Right now we are just using scheduled timer under the assumption that 0.1 is generous enough on resources for accuracy.
+  // NOTE: Right now we are just using scheduled timer under the assumption that 0.01 is generous enough on resources for accuracy.
   // However, this is likely less accurate than polling time on each loop. We *shouldn't* trust the Timer because it is only fired
   // on that interval, not run on that interval, to say nothing of execution.
 
@@ -49,6 +49,7 @@ struct ContentView: View {
         } else {
           CFRunLoopRemoveTimer(runLoop, self.timer, CFRunLoopMode.commonModes)
           self.timer = nil
+          // ensure button graphics are updated
         }
       })
       CFRunLoopAddTimer(runLoop, timer, CFRunLoopMode.commonModes)
@@ -61,6 +62,7 @@ struct ContentView: View {
 
   private func stopTimer() {
     let runLoop = CFRunLoopGetCurrent()
+    // ensure timer exists here...
     CFRunLoopRemoveTimer(runLoop, timer, CFRunLoopMode.commonModes)
     timerRunning = false
   }
@@ -87,6 +89,22 @@ struct ContentView: View {
 
     toolbarPlayImageName = toolbarPlayImageNameForTimerRunning(timerRunning)
     toolbarStopImageName = toolbarStopImageNameForTimerRunning(timerRunning)
+  }
+
+  private func resetSteps() {
+    allTimerTimes.forEach({ (timerTime) in
+      context.delete(timerTime)
+    })
+
+    do {
+      try context.save()
+      let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
+        return timerStep.currentTime
+      })
+      timerSteps = timerStepsFromTimerTimes(sortedTimerTimes: allTimerTimes, currentTimes: currentTimes)
+    } catch {
+      print(error)
+    }
   }
 
   private func addStep() {
@@ -130,6 +148,9 @@ struct ContentView: View {
       CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: currentTotalTime, font: .largeTitle))
       List(wrappedTimes) { timerTime in
         CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: timerTime.currentTime, font: .title))
+      }
+      Button(action: self.resetSteps) {
+        Text("Reset")
       }
       Button(action: self.addStep) {
         Text("New")
