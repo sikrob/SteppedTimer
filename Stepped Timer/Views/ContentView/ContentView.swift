@@ -25,16 +25,27 @@ struct ContentView: View {
 
   @State var timerAction: Timer? = nil
 
-  @State var testTime: TimeInterval = 10.0
+  // NOTE: Right now we are just using scheduled timer under the assumption that 0.1 is generous enough on resources for accuracy.
+  // However, this is likely less accurate than polling time on each loop. We *shouldn't* trust the Timer because it is only fired
+  // on that interval, not run on that interval, to say nothing of execution.
 
+  // Notable problems so far: Pauses between step execution... why? Is this due to Swift UI? Anyway, DEFINITELY means we need to
+  // retool timing again, but for now we need to finish this and make the code clean, THEN (hopefully) we can just gut the logic
+  // and reset it.
   private func updateTimer() {
     let runLoop = CFRunLoopGetCurrent()
 
     if timer == nil {
-      timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { (Timer) -> Void in
-        print("running self.testTime \(self.testTime)")
-        if (self.testTime > 0) {
-          self.testTime -= 0.1
+      timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (Timer) in
+        let currentStep: Int? = self.timerSteps.lastIndex(where: { (timerStep: TimerStep) -> Bool in
+          return timerStep.currentTime > 0
+        })
+
+        if currentStep != nil {
+          self.timerSteps[currentStep!].currentTime -= 0.1
+          if self.timerSteps[currentStep!].currentTime <= 0 { // in case of weird math
+            self.timerSteps[currentStep!].currentTime = 0
+          }
         } else {
           CFRunLoopRemoveTimer(runLoop, self.timer, CFRunLoopMode.commonModes)
           self.timer = nil
@@ -55,6 +66,11 @@ struct ContentView: View {
   }
 
   private func toolbarPlayButtonAction() {
+    let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
+      return timerStep.currentTime
+    })
+    timerSteps = timerStepsFromTimerTimes(sortedTimerTimes: allTimerTimes, currentTimes: currentTimes)
+
     timerRunning = !timerRunning
     toolbarPlayImageName = toolbarPlayImageNameForTimerRunning(timerRunning)
     toolbarStopImageName = toolbarStopImageNameForTimerRunning(timerRunning)
@@ -62,13 +78,15 @@ struct ContentView: View {
   }
 
   private func toolbarStopButtonAction() {
-    timerRunning = false
+    if timerRunning == false {
+      // reset timer times
+    } else {
+      timerRunning = false
+      stopTimer()
+    }
+
     toolbarPlayImageName = toolbarPlayImageNameForTimerRunning(timerRunning)
     toolbarStopImageName = toolbarStopImageNameForTimerRunning(timerRunning)
-    stopTimer()
-    // reset timer times
-
-    testTime = 10.0
   }
 
   private func addStep() {
@@ -97,7 +115,12 @@ struct ContentView: View {
       playImageSystemName: toolbarPlayImageName,
       stopImageSystemName: toolbarStopImageName)
 
-    let currentTotalTime = allTimerTimes.map({ (timerTime) -> TimeInterval in
+    let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
+      return timerStep.currentTime
+    })
+    let wrappedTimes = timerStepsFromTimerTimes(sortedTimerTimes: allTimerTimes, currentTimes: currentTimes)
+
+    let currentTotalTime = wrappedTimes.map({ (timerTime) -> TimeInterval in
       return timerTime.currentTime
     }).reduce(0.0, { (cumulativeTime: TimeInterval, nextTime: TimeInterval) -> TimeInterval in
       return cumulativeTime + nextTime
@@ -105,28 +128,14 @@ struct ContentView: View {
 
     return VStack {
       CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: currentTotalTime, font: .largeTitle))
-      List(allTimerTimes) { timerTime in
+      List(wrappedTimes) { timerTime in
         CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: timerTime.currentTime, font: .title))
       }
-      Text("\(testTime)")
       Button(action: self.addStep) {
         Text("New")
       }
       TimerToolbar(params: timerToolbarParams)
     }
-
-    /* New Plan
-
-     VStack {
-      CoundownUi(allSteps) -> produce a state based on steps param; state incl currentTimes
-        CTText big currentTimes
-        List -> CTText lessBig currentTime of step
-             -> Delete Buttons
-             -> plus Add New -> Button(addStepCallback?)...
-      TimerToolbar(...)
-     }
-
-     */
   }
 }
 
