@@ -17,6 +17,12 @@ func timerStepsFromTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>, curre
   })
 }
 
+func maxTimeTimerSteps(sortedTimerTimes: FetchedResults<TimerTime>) -> [TimerStep] {
+  return sortedTimerTimes.map({ (timerTime: TimerTime) -> TimerStep in
+    return TimerStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: timerTime.maxTime)
+  })
+}
+
 func toolbarPlayImageNameForTimerRunning(_ timerRunning: Bool) -> String {
   return timerRunning ? "pause" : "play.fill"
 }

@@ -61,9 +61,10 @@ struct ContentView: View {
   }
 
   private func stopTimer() {
-    let runLoop = CFRunLoopGetCurrent()
-    // ensure timer exists here...
-    CFRunLoopRemoveTimer(runLoop, timer, CFRunLoopMode.commonModes)
+    if timer != nil {
+      let runLoop = CFRunLoopGetCurrent()
+      CFRunLoopRemoveTimer(runLoop, timer, CFRunLoopMode.commonModes)
+    }
     timerRunning = false
   }
 
@@ -81,7 +82,7 @@ struct ContentView: View {
 
   private func toolbarStopButtonAction() {
     if timerRunning == false {
-      // reset timer times
+      timerSteps = maxTimeTimerSteps(sortedTimerTimes: allTimerTimes)
     } else {
       timerRunning = false
       stopTimer()
