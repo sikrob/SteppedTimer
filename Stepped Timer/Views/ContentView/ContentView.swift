@@ -17,55 +17,64 @@ struct ContentView: View {
     sortDescriptors: [NSSortDescriptor(key: "stepNumber", ascending: true)]
   ) var allTimerTimes: FetchedResults<TimerTime>
 
-  @State var timer: Timer? = nil
   @State var timerSteps: [TimerStep] = []
+
+  @State var timer: Timer? = nil
+  @State var timerDispatchTime: DispatchTime? = nil
   @State var timerRunning: Bool = false
-  @State var toolbarPlayImageName: String = "play.fill"
-  @State var toolbarStopImageName: String = "arrow.clockwise.circle.fill"
 
-  @State var timerAction: Timer? = nil
+  @State var toolbarPlayImageName: String = toolbarPlayImageNameForTimerRunning(false)
+  @State var toolbarStopImageName: String = toolbarStopImageNameForTimerRunning(false)
 
-  // NOTE: Right now we are just using scheduled timer under the assumption that 0.01 is generous enough on resources for accuracy.
-  // However, this is likely less accurate than polling time on each loop. We *shouldn't* trust the Timer because it is only fired
-  // on that interval, not run on that interval, to say nothing of execution.
-
-  // Notable problems so far: Pauses between step execution... why? Is this due to Swift UI? Anyway, DEFINITELY means we need to
-  // retool timing again, but for now we need to finish this and make the code clean, THEN (hopefully) we can just gut the logic
-  // and reset it.
-  private func updateTimer() {
+  private func startTimer() {
     let runLoop = CFRunLoopGetCurrent()
+    timerDispatchTime = DispatchTime.now()
 
     if timer == nil {
-      timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (Timer) in
-        let currentStep: Int? = self.timerSteps.lastIndex(where: { (timerStep: TimerStep) -> Bool in
-          return timerStep.currentTime > 0
-        })
+      timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: updateTimer)
+    }
 
-        if currentStep != nil {
-          self.timerSteps[currentStep!].currentTime -= 0.1
-          if self.timerSteps[currentStep!].currentTime <= 0 { // in case of weird math
-            self.timerSteps[currentStep!].currentTime = 0
-          }
-        } else {
-          CFRunLoopRemoveTimer(runLoop, self.timer, CFRunLoopMode.commonModes)
-          self.timer = nil
-          // ensure button graphics are updated
-        }
-      })
+    if !timerRunning {
       CFRunLoopAddTimer(runLoop, timer, CFRunLoopMode.commonModes)
-    } else if (!timerRunning) {
-      CFRunLoopRemoveTimer(runLoop, timer, CFRunLoopMode.commonModes)
+    }
+
+    timerRunning = true
+  }
+
+  private func updateTimer(_ scheduledTimer: Timer) {
+    let currentStep: Int? = self.timerSteps.lastIndex(where: { (timerStep: TimerStep) -> Bool in
+      return timerStep.currentTime > 0
+    })
+
+    if currentStep != nil {
+      let deltaTime = DispatchTime.now()
+      let delta = Double(deltaTime.uptimeNanoseconds - self.timerDispatchTime!.uptimeNanoseconds) / 1_000_000_000
+      self.timerDispatchTime = deltaTime
+
+      self.timerSteps[currentStep!].currentTime -= delta
+      if self.timerSteps[currentStep!].currentTime <= 0 {
+        self.timerSteps[currentStep!].currentTime = 0
+      }
     } else {
-      CFRunLoopAddTimer(runLoop, timer, CFRunLoopMode.commonModes)
+      self.stopTimer()
+      self.timer = nil
+      self.timerDispatchTime = nil
+
+      updateToolbarImageNames()
     }
   }
 
   private func stopTimer() {
-    if timer != nil {
+    if self.timer != nil {
       let runLoop = CFRunLoopGetCurrent()
-      CFRunLoopRemoveTimer(runLoop, timer, CFRunLoopMode.commonModes)
+      CFRunLoopRemoveTimer(runLoop, self.timer, CFRunLoopMode.commonModes)
     }
-    timerRunning = false
+    self.timerRunning = false
+  }
+
+  private func updateToolbarImageNames() {
+    self.toolbarPlayImageName = toolbarPlayImageNameForTimerRunning(self.timerRunning)
+    self.toolbarStopImageName = toolbarStopImageNameForTimerRunning(self.timerRunning)
   }
 
   private func toolbarPlayButtonAction() {
@@ -74,22 +83,23 @@ struct ContentView: View {
     })
     timerSteps = timerStepsFromTimerTimes(sortedTimerTimes: allTimerTimes, currentTimes: currentTimes)
 
-    timerRunning = !timerRunning
-    toolbarPlayImageName = toolbarPlayImageNameForTimerRunning(timerRunning)
-    toolbarStopImageName = toolbarStopImageNameForTimerRunning(timerRunning)
-    updateTimer()
-  }
-
-  private func toolbarStopButtonAction() {
-    if timerRunning == false {
-      timerSteps = maxTimeTimerSteps(sortedTimerTimes: allTimerTimes)
+    if !timerRunning {
+      startTimer()
     } else {
-      timerRunning = false
       stopTimer()
     }
 
-    toolbarPlayImageName = toolbarPlayImageNameForTimerRunning(timerRunning)
-    toolbarStopImageName = toolbarStopImageNameForTimerRunning(timerRunning)
+    updateToolbarImageNames()
+  }
+
+  private func toolbarStopButtonAction() {
+    if !timerRunning {
+      timerSteps = maxTimeTimerSteps(sortedTimerTimes: allTimerTimes)
+    } else {
+      stopTimer()
+    }
+
+    updateToolbarImageNames()
   }
 
   private func resetSteps() {

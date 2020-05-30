@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E1146F15243C07C000A87DC1 /* ContentViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1146F14243C07C000A87DC1 /* ContentViewState.swift */; };
 		E1146F18243C099A00A87DC1 /* ContentViewLogic_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1146F17243C099A00A87DC1 /* ContentViewLogic_Tests.swift */; };
 		E16583A2244E7D4700AD4105 /* CountdownUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16583A1244E7D4700AD4105 /* CountdownUi.swift */; };
 		E16583A4244E7E2F00AD4105 /* CountdownUiParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16583A3244E7E2F00AD4105 /* CountdownUiParams.swift */; };
@@ -49,7 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E1146F14243C07C000A87DC1 /* ContentViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewState.swift; sourceTree = "<group>"; };
 		E1146F17243C099A00A87DC1 /* ContentViewLogic_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLogic_Tests.swift; sourceTree = "<group>"; };
 		E16583A1244E7D4700AD4105 /* CountdownUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownUi.swift; sourceTree = "<group>"; };
 		E16583A3244E7E2F00AD4105 /* CountdownUiParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownUiParams.swift; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 			children = (
 				E1CB2C8E2426F44E00C8D5A0 /* ContentView.swift */,
 				E1CB2CC824271CFF00C8D5A0 /* ContentViewLogic.swift */,
-				E1146F14243C07C000A87DC1 /* ContentViewState.swift */,
 			);
 			path = ContentView;
 			sourceTree = "<group>";
@@ -393,7 +390,6 @@
 				E16583A4244E7E2F00AD4105 /* CountdownUiParams.swift in Sources */,
 				E16583A2244E7D4700AD4105 /* CountdownUi.swift in Sources */,
 				E1CB2CCE2427BC2600C8D5A0 /* CountdownTimerText.swift in Sources */,
-				E1146F15243C07C000A87DC1 /* ContentViewState.swift in Sources */,
 				E17BEEB1244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld in Sources */,
 				E1CB2CD32427BEA900C8D5A0 /* CountdownTimerTextLogic.swift in Sources */,
 				E1CB2C8F2426F44E00C8D5A0 /* ContentView.swift in Sources */,
