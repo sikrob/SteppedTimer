@@ -158,14 +158,17 @@ struct ContentView: View {
     return VStack {
       CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: currentTotalTime, font: .largeTitle))
       List(wrappedTimes) { timerTime in
-        CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: timerTime.currentTime, font: .title))
+        HStack {
+          Spacer()
+          CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: timerTime.currentTime, font: .title))
+        }
       }
-      Button(action: self.resetSteps) {
-        Text("Reset")
-      }
-      Button(action: self.addStep) {
-        Text("New")
-      }
+//      Button(action: self.resetSteps) {
+//        Text("Reset")
+//      }
+//      Button(action: self.addStep) {
+//        Text("New")
+//      }
       TimerToolbar(params: timerToolbarParams)
     }
   }
