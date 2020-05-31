@@ -164,9 +164,10 @@ struct ContentView: View {
         Button(action: addStep) { Text("Add") }
           .padding(.leading, buttonPadding)
         Spacer()
-        if editMode == .active {
-          Button(action: resetSteps) { Text("Reset") }
-        }
+        Button(action: resetSteps) { Text("Reset") }
+          .disabled(editMode == .inactive)
+          .opacity(editMode == .inactive ? 0 : 1)
+          .animation(.easeInOut)
         Spacer()
         SimpleEditButton(editMode: $editMode)
           .padding(.trailing, buttonPadding)
