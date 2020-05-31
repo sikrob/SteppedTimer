@@ -171,20 +171,23 @@ struct ContentView: View {
       }
 
       CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: currentTotalTime, font: .largeTitle))
+
       List(wrappedTimes) { timerTime in
         HStack {
           Spacer()
           CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: timerTime.currentTime, font: .title))
+          Spacer()
         }
       }
+
+      TimerToolbar(params: timerToolbarParams)
+    }
 //      Button(action: self.resetSteps) {
 //        Text("Reset")
 //      }
 //      Button(action: self.addStep) {
 //        Text("New")
 //      }
-      TimerToolbar(params: timerToolbarParams)
-    }
   }
 }
 
