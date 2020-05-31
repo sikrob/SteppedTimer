@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E1146F18243C099A00A87DC1 /* ContentViewLogic_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1146F17243C099A00A87DC1 /* ContentViewLogic_Tests.swift */; };
+		E131CFB724841BE8004767E3 /* SimpleEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131CFB624841BE8004767E3 /* SimpleEditButton.swift */; };
 		E16583A2244E7D4700AD4105 /* CountdownUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16583A1244E7D4700AD4105 /* CountdownUi.swift */; };
 		E16583A4244E7E2F00AD4105 /* CountdownUiParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16583A3244E7E2F00AD4105 /* CountdownUiParams.swift */; };
 		E17BEEB1244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E17BEEAF244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		E1146F17243C099A00A87DC1 /* ContentViewLogic_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLogic_Tests.swift; sourceTree = "<group>"; };
+		E131CFB624841BE8004767E3 /* SimpleEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEditButton.swift; sourceTree = "<group>"; };
 		E16583A1244E7D4700AD4105 /* CountdownUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownUi.swift; sourceTree = "<group>"; };
 		E16583A3244E7E2F00AD4105 /* CountdownUiParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownUiParams.swift; sourceTree = "<group>"; };
 		E17BEEB0244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SteppedTimer.xcdatamodel; sourceTree = "<group>"; };
@@ -117,6 +119,14 @@
 				E17BEEB2244C0F0F00A6D6D0 /* TimerTime+Extensions.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		E131CFB524841BA4004767E3 /* SimpleEditButton */ = {
+			isa = PBXGroup;
+			children = (
+				E131CFB624841BE8004767E3 /* SimpleEditButton.swift */,
+			);
+			path = SimpleEditButton;
 			sourceTree = "<group>";
 		};
 		E16583A0244E7D2A00AD4105 /* CountdownUi */ = {
@@ -202,6 +212,7 @@
 		E1CB2CC5242715C300C8D5A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E131CFB524841BA4004767E3 /* SimpleEditButton */,
 				E16583A0244E7D2A00AD4105 /* CountdownUi */,
 				E1CB2CCA24271D6900C8D5A0 /* ContentView */,
 				E1CB2CC7242716B500C8D5A0 /* TimerToolbar */,
@@ -388,6 +399,7 @@
 			files = (
 				E1CB2C882426F44E00C8D5A0 /* AppDelegate.swift in Sources */,
 				E16583A4244E7E2F00AD4105 /* CountdownUiParams.swift in Sources */,
+				E131CFB724841BE8004767E3 /* SimpleEditButton.swift in Sources */,
 				E16583A2244E7D4700AD4105 /* CountdownUi.swift in Sources */,
 				E1CB2CCE2427BC2600C8D5A0 /* CountdownTimerText.swift in Sources */,
 				E17BEEB1244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld in Sources */,

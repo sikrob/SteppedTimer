@@ -26,6 +26,8 @@ struct ContentView: View {
   @State var toolbarPlayImageName: String = toolbarPlayImageNameForTimerRunning(false)
   @State var toolbarStopImageName: String = toolbarStopImageNameForTimerRunning(false)
 
+  @State var editMode: EditMode = EditMode.inactive
+
   private func startTimer() {
     let runLoop = CFRunLoopGetCurrent()
     timerDispatchTime = DispatchTime.now()
@@ -155,7 +157,19 @@ struct ContentView: View {
       return cumulativeTime + nextTime
     })
 
+    let buttonPadding: CGFloat = 20
+
     return VStack {
+      HStack {
+        Button(action: addStep) { Text("Add Step") }
+          .padding(.leading, buttonPadding)
+        Spacer()
+        // Button: Reset, visible on editMode = .active
+        Spacer()
+        SimpleEditButton(editMode: $editMode)
+          .padding(.trailing, buttonPadding)
+      }
+
       CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: currentTotalTime, font: .largeTitle))
       List(wrappedTimes) { timerTime in
         HStack {
