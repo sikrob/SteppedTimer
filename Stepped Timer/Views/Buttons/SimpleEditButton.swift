@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct SimpleEditButton: View {
   @Binding var editMode: EditMode

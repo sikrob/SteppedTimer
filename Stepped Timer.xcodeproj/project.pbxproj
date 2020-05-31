@@ -121,12 +121,12 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		E131CFB524841BA4004767E3 /* SimpleEditButton */ = {
+		E131CFB524841BA4004767E3 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
 				E131CFB624841BE8004767E3 /* SimpleEditButton.swift */,
 			);
-			path = SimpleEditButton;
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		E16583A0244E7D2A00AD4105 /* CountdownUi */ = {
@@ -212,7 +212,7 @@
 		E1CB2CC5242715C300C8D5A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E131CFB524841BA4004767E3 /* SimpleEditButton */,
+				E131CFB524841BA4004767E3 /* Buttons */,
 				E16583A0244E7D2A00AD4105 /* CountdownUi */,
 				E1CB2CCA24271D6900C8D5A0 /* ContentView */,
 				E1CB2CC7242716B500C8D5A0 /* TimerToolbar */,
