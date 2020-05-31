@@ -161,14 +161,16 @@ struct ContentView: View {
 
     return VStack {
       HStack {
-        Button(action: addStep) { Text("Add Step") }
+        Button(action: addStep) { Text("Add") }
           .padding(.leading, buttonPadding)
         Spacer()
-        // Button: Reset, visible on editMode = .active
+        if editMode == .active {
+          Button(action: resetSteps) { Text("Reset") }
+        }
         Spacer()
         SimpleEditButton(editMode: $editMode)
           .padding(.trailing, buttonPadding)
-      }
+      }.padding(.bottom, buttonPadding)
 
       CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: currentTotalTime, font: .largeTitle))
 
@@ -182,12 +184,6 @@ struct ContentView: View {
 
       TimerToolbar(params: timerToolbarParams)
     }
-//      Button(action: self.resetSteps) {
-//        Text("Reset")
-//      }
-//      Button(action: self.addStep) {
-//        Text("New")
-//      }
   }
 }
 
