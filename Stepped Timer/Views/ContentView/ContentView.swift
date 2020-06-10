@@ -174,12 +174,20 @@ struct ContentView: View {
       }.padding(.bottom, buttonPadding)
 
       CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: currentTotalTime, font: .largeTitle))
-
       List(wrappedTimes) { timerTime in
-        HStack {
-          Spacer()
-          CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: timerTime.currentTime, font: .title))
-          Spacer()
+        if self.editMode == .inactive {
+          HStack {
+            Spacer()
+            CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: timerTime.currentTime, font: .title))
+            Spacer()
+          }
+        } else {
+          HStack {
+            Spacer()
+            CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: timerTime.currentTime, font: .title))
+            Spacer()
+            Button(action: self.addStep) { Image(systemName: "xmark.circle") }
+          }
         }
       }
 
