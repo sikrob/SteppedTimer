@@ -157,21 +157,10 @@ struct ContentView: View {
       return cumulativeTime + nextTime
     })
 
-    let buttonPadding: CGFloat = 20
-
     return VStack {
-      HStack {
-        Button(action: addStep) { Text("Add") }
-          .padding(.leading, buttonPadding)
-        Spacer()
-        Button(action: resetSteps) { Text("Reset") }
-          .disabled(editMode == .inactive)
-          .opacity(editMode == .inactive ? 0 : 1)
-          .animation(.easeInOut)
-        Spacer()
-        SimpleEditButton(editMode: $editMode)
-          .padding(.trailing, buttonPadding)
-      }.padding(.bottom, buttonPadding)
+      StepsToolbar(addStepCallback: addStep,
+                   resetListCallback: resetSteps,
+                   editMode: $editMode)
 
       CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: currentTotalTime, font: .largeTitle))
       List(wrappedTimes) { timerTime in

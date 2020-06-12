@@ -11,6 +11,7 @@
 		E131CFB724841BE8004767E3 /* SimpleEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131CFB624841BE8004767E3 /* SimpleEditButton.swift */; };
 		E16583A2244E7D4700AD4105 /* CountdownUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16583A1244E7D4700AD4105 /* CountdownUi.swift */; };
 		E16583A4244E7E2F00AD4105 /* CountdownUiParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16583A3244E7E2F00AD4105 /* CountdownUiParams.swift */; };
+		E17629082493181F0023D2AA /* StepsToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17629072493181F0023D2AA /* StepsToolbar.swift */; };
 		E17BEEB1244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E17BEEAF244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld */; };
 		E17BEEB3244C0F0F00A6D6D0 /* TimerTime+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BEEB2244C0F0F00A6D6D0 /* TimerTime+Extensions.swift */; };
 		E1B8CC962443DCA20000C409 /* TimerStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8CC952443DCA20000C409 /* TimerStep.swift */; };
@@ -53,6 +54,7 @@
 		E131CFB624841BE8004767E3 /* SimpleEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEditButton.swift; sourceTree = "<group>"; };
 		E16583A1244E7D4700AD4105 /* CountdownUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownUi.swift; sourceTree = "<group>"; };
 		E16583A3244E7E2F00AD4105 /* CountdownUiParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownUiParams.swift; sourceTree = "<group>"; };
+		E17629072493181F0023D2AA /* StepsToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsToolbar.swift; sourceTree = "<group>"; };
 		E17BEEB0244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SteppedTimer.xcdatamodel; sourceTree = "<group>"; };
 		E17BEEB2244C0F0F00A6D6D0 /* TimerTime+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimerTime+Extensions.swift"; sourceTree = "<group>"; };
 		E1B8CC952443DCA20000C409 /* TimerStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStep.swift; sourceTree = "<group>"; };
@@ -138,6 +140,14 @@
 			path = CountdownUi;
 			sourceTree = "<group>";
 		};
+		E17629062493179C0023D2AA /* StepsToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				E17629072493181F0023D2AA /* StepsToolbar.swift */,
+			);
+			path = StepsToolbar;
+			sourceTree = "<group>";
+		};
 		E1B8CC942443DC7C0000C409 /* Shared Structs */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +222,7 @@
 		E1CB2CC5242715C300C8D5A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E17629062493179C0023D2AA /* StepsToolbar */,
 				E131CFB524841BA4004767E3 /* Buttons */,
 				E16583A0244E7D2A00AD4105 /* CountdownUi */,
 				E1CB2CCA24271D6900C8D5A0 /* ContentView */,
@@ -412,6 +423,7 @@
 				E1CB2CD12427BDE600C8D5A0 /* CountdownTimerTextParams.swift in Sources */,
 				E1B8CC962443DCA20000C409 /* TimerStep.swift in Sources */,
 				E1CB2CC2242712F600C8D5A0 /* TimerToolbarParams.swift in Sources */,
+				E17629082493181F0023D2AA /* StepsToolbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
