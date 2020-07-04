@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E101E4AB24B0CDA400961BAB /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = E101E4AA24B0CDA400961BAB /* Sounds */; };
 		E1146F18243C099A00A87DC1 /* ContentViewLogic_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1146F17243C099A00A87DC1 /* ContentViewLogic_Tests.swift */; };
 		E131CFB724841BE8004767E3 /* SimpleEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131CFB624841BE8004767E3 /* SimpleEditButton.swift */; };
-		E16583A2244E7D4700AD4105 /* CountdownUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16583A1244E7D4700AD4105 /* CountdownUi.swift */; };
-		E16583A4244E7E2F00AD4105 /* CountdownUiParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16583A3244E7E2F00AD4105 /* CountdownUiParams.swift */; };
 		E17629082493181F0023D2AA /* StepsToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17629072493181F0023D2AA /* StepsToolbar.swift */; };
 		E17BEEB1244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E17BEEAF244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld */; };
 		E17BEEB3244C0F0F00A6D6D0 /* TimerTime+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BEEB2244C0F0F00A6D6D0 /* TimerTime+Extensions.swift */; };
@@ -50,10 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E101E4AA24B0CDA400961BAB /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		E1146F17243C099A00A87DC1 /* ContentViewLogic_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLogic_Tests.swift; sourceTree = "<group>"; };
 		E131CFB624841BE8004767E3 /* SimpleEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEditButton.swift; sourceTree = "<group>"; };
-		E16583A1244E7D4700AD4105 /* CountdownUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownUi.swift; sourceTree = "<group>"; };
-		E16583A3244E7E2F00AD4105 /* CountdownUiParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownUiParams.swift; sourceTree = "<group>"; };
 		E17629072493181F0023D2AA /* StepsToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsToolbar.swift; sourceTree = "<group>"; };
 		E17BEEB0244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SteppedTimer.xcdatamodel; sourceTree = "<group>"; };
 		E17BEEB2244C0F0F00A6D6D0 /* TimerTime+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimerTime+Extensions.swift"; sourceTree = "<group>"; };
@@ -131,15 +129,6 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
-		E16583A0244E7D2A00AD4105 /* CountdownUi */ = {
-			isa = PBXGroup;
-			children = (
-				E16583A1244E7D4700AD4105 /* CountdownUi.swift */,
-				E16583A3244E7E2F00AD4105 /* CountdownUiParams.swift */,
-			);
-			path = CountdownUi;
-			sourceTree = "<group>";
-		};
 		E17629062493179C0023D2AA /* StepsToolbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +168,7 @@
 		E1CB2C862426F44E00C8D5A0 /* Stepped Timer */ = {
 			isa = PBXGroup;
 			children = (
+				E101E4AA24B0CDA400961BAB /* Sounds */,
 				E12829D62444D56900E7BF54 /* CoreData */,
 				E1B8CC942443DC7C0000C409 /* Shared Structs */,
 				E1CB2CC5242715C300C8D5A0 /* Views */,
@@ -224,7 +214,6 @@
 			children = (
 				E17629062493179C0023D2AA /* StepsToolbar */,
 				E131CFB524841BA4004767E3 /* Buttons */,
-				E16583A0244E7D2A00AD4105 /* CountdownUi */,
 				E1CB2CCA24271D6900C8D5A0 /* ContentView */,
 				E1CB2CC7242716B500C8D5A0 /* TimerToolbar */,
 				E1CB2CCF2427BDB500C8D5A0 /* CountdownTimerText */,
@@ -383,6 +372,7 @@
 			files = (
 				E1CB2C972426F44F00C8D5A0 /* LaunchScreen.storyboard in Resources */,
 				E1CB2C942426F44F00C8D5A0 /* Preview Assets.xcassets in Resources */,
+				E101E4AB24B0CDA400961BAB /* Sounds in Resources */,
 				E1CB2C912426F44F00C8D5A0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,9 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1CB2C882426F44E00C8D5A0 /* AppDelegate.swift in Sources */,
-				E16583A4244E7E2F00AD4105 /* CountdownUiParams.swift in Sources */,
 				E131CFB724841BE8004767E3 /* SimpleEditButton.swift in Sources */,
-				E16583A2244E7D4700AD4105 /* CountdownUi.swift in Sources */,
 				E1CB2CCE2427BC2600C8D5A0 /* CountdownTimerText.swift in Sources */,
 				E17BEEB1244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld in Sources */,
 				E1CB2CD32427BEA900C8D5A0 /* CountdownTimerTextLogic.swift in Sources */,
@@ -506,6 +494,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -566,6 +555,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

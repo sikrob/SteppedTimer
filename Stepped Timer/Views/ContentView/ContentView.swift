@@ -8,6 +8,7 @@
 
 import SwiftUI
 import CoreData
+import AVFoundation
 
 struct ContentView: View {
   @Environment(\.managedObjectContext) var context
@@ -28,7 +29,16 @@ struct ContentView: View {
 
   @State var editMode: EditMode = EditMode.inactive
 
+  let gPath: String? = Bundle.main.path(forResource: "G", ofType: "aiff", inDirectory: "Sounds")
+  let cPath: String? = Bundle.main.path(forResource: "C", ofType: "aiff", inDirectory: "Sounds")
+
+  @State var cAudioPlayer: AVAudioPlayer?
+  @State var gAudioPlayer: AVAudioPlayer?
+
   private func startTimer() {
+    gAudioPlayer = prepareAudioPlayer(audioPlayer: gAudioPlayer, audioFilePath: gPath!)
+    cAudioPlayer = prepareAudioPlayer(audioPlayer: cAudioPlayer, audioFilePath: cPath!)
+
     let runLoop = CFRunLoopGetCurrent()
     timerDispatchTime = DispatchTime.now()
 
@@ -56,6 +66,8 @@ struct ContentView: View {
       self.timerSteps[currentStep!].currentTime -= delta
       if self.timerSteps[currentStep!].currentTime <= 0 {
         self.timerSteps[currentStep!].currentTime = 0
+
+        playStepSoud(stepNumber: currentStep!, gAudioPlayer: gAudioPlayer!, cAudioPlayer: cAudioPlayer!)
       }
     } else {
       self.stopTimer()
@@ -124,8 +136,8 @@ struct ContentView: View {
     let stepNumber = Int16(allTimerTimes.count)
     let newTimerTime = TimerTime(context: context)
     newTimerTime.id = UUID()
-    newTimerTime.maxTime = 10.0
-    newTimerTime.currentTime = 10.0
+    newTimerTime.maxTime = 5.0
+    newTimerTime.currentTime = 5.0
     newTimerTime.stepNumber = stepNumber
 
     do {
