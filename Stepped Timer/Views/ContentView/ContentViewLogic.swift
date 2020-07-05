@@ -11,7 +11,9 @@ import SwiftUI
 import CoreData
 import AVFoundation
 
-func playStepSoud(stepNumber: Int, gAudioPlayer: AVAudioPlayer, cAudioPlayer: AVAudioPlayer) {
+// AV Functions
+
+func playStepSound(stepNumber: Int, gAudioPlayer: AVAudioPlayer, cAudioPlayer: AVAudioPlayer) {
   if stepNumber > 0 {
     gAudioPlayer.play()
   } else {
@@ -19,7 +21,6 @@ func playStepSoud(stepNumber: Int, gAudioPlayer: AVAudioPlayer, cAudioPlayer: AV
   }
 }
 
-// Still results in a delay on first prepare, not sure how to bypass that with swift UI... ideally we'd have that all sorted in constructor
 func prepareAudioPlayer(audioPlayer: AVAudioPlayer?, audioFilePath: String) -> AVAudioPlayer? {
   if audioPlayer != nil {
     return audioPlayer
@@ -37,6 +38,8 @@ func prepareAudioPlayer(audioPlayer: AVAudioPlayer?, audioFilePath: String) -> A
   return nil
 }
 
+// TimerStep Functions
+
 func timerStepsFromTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>, currentTimes: [TimeInterval]) -> [TimerStep] {
   return sortedTimerTimes.enumerated().map({ (index: Int, timerTime: TimerTime) -> TimerStep in
     let currentTime = index < currentTimes.count ? currentTimes[index] : timerTime.maxTime
@@ -50,10 +53,16 @@ func maxTimeTimerSteps(sortedTimerTimes: FetchedResults<TimerTime>) -> [TimerSte
   })
 }
 
+// Image Functions
 func toolbarPlayImageNameForTimerRunning(_ timerRunning: Bool) -> String {
   return timerRunning ? "pause" : "play.fill"
 }
 
 func toolbarStopImageNameForTimerRunning(_ timerRunning: Bool) -> String {
   return timerRunning ? "stop.fill" : "arrow.clockwise.circle.fill"
+}
+
+func updateToolbarImageNames(toolbarPlayImageName: Binding<String>, toolbarStopImageName: Binding<String>, timerRunning: Bool) {
+  toolbarPlayImageName.wrappedValue = toolbarPlayImageNameForTimerRunning(timerRunning)
+  toolbarStopImageName.wrappedValue = toolbarStopImageNameForTimerRunning(timerRunning)
 }

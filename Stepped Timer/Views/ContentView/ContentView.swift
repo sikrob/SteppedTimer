@@ -68,28 +68,15 @@ struct ContentView: View {
       if self.timerSteps[currentStep!].currentTime <= 0 {
         self.timerSteps[currentStep!].currentTime = 0
 
-        playStepSoud(stepNumber: currentStep!, gAudioPlayer: self.gAudioPlayer!, cAudioPlayer: self.cAudioPlayer!)
+        playStepSound(stepNumber: currentStep!, gAudioPlayer: self.gAudioPlayer!, cAudioPlayer: self.cAudioPlayer!)
       }
     } else {
-      self.stopTimer()
+      stopTimer(timer: $timer, timerRunning: $timerRunning)
       self.timer = nil
       self.timerDispatchTime = nil
 
-      updateToolbarImageNames()
+      updateToolbarImageNames(toolbarPlayImageName: $toolbarPlayImageName, toolbarStopImageName: $toolbarStopImageName, timerRunning: self.timerRunning)
     }
-  }
-
-  private func stopTimer() {
-    if self.timer != nil {
-      let runLoop = CFRunLoopGetCurrent()
-      CFRunLoopRemoveTimer(runLoop, self.timer, CFRunLoopMode.commonModes)
-    }
-    self.timerRunning = false
-  }
-
-  private func updateToolbarImageNames() {
-    self.toolbarPlayImageName = toolbarPlayImageNameForTimerRunning(self.timerRunning)
-    self.toolbarStopImageName = toolbarStopImageNameForTimerRunning(self.timerRunning)
   }
 
   private func toolbarPlayButtonAction() {
@@ -101,20 +88,20 @@ struct ContentView: View {
     if !timerRunning {
       startTimer()
     } else {
-      stopTimer()
+      stopTimer(timer: $timer, timerRunning: $timerRunning)
     }
 
-    updateToolbarImageNames()
+    updateToolbarImageNames(toolbarPlayImageName: $toolbarPlayImageName, toolbarStopImageName: $toolbarStopImageName, timerRunning: timerRunning)
   }
 
   private func toolbarStopButtonAction() {
     if !timerRunning {
       timerSteps = maxTimeTimerSteps(sortedTimerTimes: allTimerTimes)
     } else {
-      stopTimer()
+      stopTimer(timer: $timer, timerRunning: $timerRunning)
     }
 
-    updateToolbarImageNames()
+    updateToolbarImageNames(toolbarPlayImageName: $toolbarPlayImageName, toolbarStopImageName: $toolbarStopImageName, timerRunning: timerRunning)
   }
 
   private func resetSteps() {
@@ -150,6 +137,10 @@ struct ContentView: View {
     } catch {
       print(error)
     }
+  }
+
+  private func removeStep() {
+    // TODO
   }
 
   var body: some View {

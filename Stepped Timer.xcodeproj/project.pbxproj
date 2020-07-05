@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E101E4AB24B0CDA400961BAB /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = E101E4AA24B0CDA400961BAB /* Sounds */; };
 		E1146F18243C099A00A87DC1 /* ContentViewLogic_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1146F17243C099A00A87DC1 /* ContentViewLogic_Tests.swift */; };
+		E1182B3624B28FDF00674D93 /* ContentViewTimerLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1182B3524B28FDF00674D93 /* ContentViewTimerLogic.swift */; };
 		E131CFB724841BE8004767E3 /* SimpleEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131CFB624841BE8004767E3 /* SimpleEditButton.swift */; };
 		E17629082493181F0023D2AA /* StepsToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17629072493181F0023D2AA /* StepsToolbar.swift */; };
 		E17BEEB1244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E17BEEAF244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		E101E4AA24B0CDA400961BAB /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		E1146F17243C099A00A87DC1 /* ContentViewLogic_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLogic_Tests.swift; sourceTree = "<group>"; };
+		E1182B3524B28FDF00674D93 /* ContentViewTimerLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTimerLogic.swift; sourceTree = "<group>"; };
 		E131CFB624841BE8004767E3 /* SimpleEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEditButton.swift; sourceTree = "<group>"; };
 		E17629072493181F0023D2AA /* StepsToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsToolbar.swift; sourceTree = "<group>"; };
 		E17BEEB0244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SteppedTimer.xcdatamodel; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				E1CB2C8E2426F44E00C8D5A0 /* ContentView.swift */,
 				E1CB2CC824271CFF00C8D5A0 /* ContentViewLogic.swift */,
+				E1182B3524B28FDF00674D93 /* ContentViewTimerLogic.swift */,
 			);
 			path = ContentView;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				E1CB2CC42427156900C8D5A0 /* TimerToolbar.swift in Sources */,
 				E1CB2CC924271CFF00C8D5A0 /* ContentViewLogic.swift in Sources */,
 				E17BEEB3244C0F0F00A6D6D0 /* TimerTime+Extensions.swift in Sources */,
+				E1182B3624B28FDF00674D93 /* ContentViewTimerLogic.swift in Sources */,
 				E1CB2C8A2426F44E00C8D5A0 /* SceneDelegate.swift in Sources */,
 				E1B8CC962443DCA20000C409 /* TimerStep.swift in Sources */,
 				E1CB2CC2242712F600C8D5A0 /* TimerToolbarParams.swift in Sources */,
