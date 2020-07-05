@@ -31,14 +31,15 @@ struct ContentView: View {
 
   let gPath: String? = Bundle.main.path(forResource: "G", ofType: "aiff", inDirectory: "Sounds")
   let cPath: String? = Bundle.main.path(forResource: "C", ofType: "aiff", inDirectory: "Sounds")
+  var cAudioPlayer: AVAudioPlayer?
+  var gAudioPlayer: AVAudioPlayer?
 
-  @State var cAudioPlayer: AVAudioPlayer?
-  @State var gAudioPlayer: AVAudioPlayer?
+  init() {
+    self.gAudioPlayer = prepareAudioPlayer(audioPlayer: self.gAudioPlayer, audioFilePath: self.gPath!)
+    self.cAudioPlayer = prepareAudioPlayer(audioPlayer: self.cAudioPlayer, audioFilePath: self.cPath!)
+  }
 
   private func startTimer() {
-    gAudioPlayer = prepareAudioPlayer(audioPlayer: gAudioPlayer, audioFilePath: gPath!)
-    cAudioPlayer = prepareAudioPlayer(audioPlayer: cAudioPlayer, audioFilePath: cPath!)
-
     let runLoop = CFRunLoopGetCurrent()
     timerDispatchTime = DispatchTime.now()
 
@@ -67,7 +68,7 @@ struct ContentView: View {
       if self.timerSteps[currentStep!].currentTime <= 0 {
         self.timerSteps[currentStep!].currentTime = 0
 
-        playStepSoud(stepNumber: currentStep!, gAudioPlayer: gAudioPlayer!, cAudioPlayer: cAudioPlayer!)
+        playStepSoud(stepNumber: currentStep!, gAudioPlayer: self.gAudioPlayer!, cAudioPlayer: self.cAudioPlayer!)
       }
     } else {
       self.stopTimer()
