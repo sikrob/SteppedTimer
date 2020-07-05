@@ -14,19 +14,17 @@ import SwiftUI
 // and we get pretty formatted time in return (00:00:00.00)
 
 struct CountdownTimerText: View {
-  var params: CountdownTimerTextParams
+  var timeInterval: TimeInterval
+  var font: Font
 
   var body: some View {
-    Text(convertTimeIntervalToTimerString(timeInterval: params.timeInterval))
-      .font(params.font)
+    Text(convertTimeIntervalToTimerString(timeInterval: timeInterval))
+      .font(font)
   }
 }
 
 struct CountdownTimerText_Previews: PreviewProvider {
   static var previews: some View {
-    let countdownTimerTextParams = CountdownTimerTextParams(
-      timerRunning: false, timeInterval: 1267.31, font: .largeTitle
-    )
-    return CountdownTimerText(params: countdownTimerTextParams)
+    return CountdownTimerText(timeInterval: 1267.31, font: .largeTitle)
   }
 }

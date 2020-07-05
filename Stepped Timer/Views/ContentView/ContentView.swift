@@ -174,18 +174,18 @@ struct ContentView: View {
                    resetListCallback: resetSteps,
                    editMode: $editMode)
 
-      CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: currentTotalTime, font: .largeTitle))
+      CountdownTimerText(timeInterval: currentTotalTime, font: .largeTitle)
       List(wrappedTimes) { timerTime in
         if self.editMode == .inactive {
           HStack {
             Spacer()
-            CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: timerTime.currentTime, font: .title))
+            CountdownTimerText(timeInterval: timerTime.currentTime, font: .title)
             Spacer()
           }
         } else {
           HStack {
             Spacer()
-            CountdownTimerText(params: CountdownTimerTextParams(timerRunning: false, timeInterval: timerTime.currentTime, font: .title))
+            CountdownTimerText(timeInterval: timerTime.currentTime, font: .title)
             Spacer()
             Button(action: self.addStep) { Image(systemName: "xmark.circle") }
           }
