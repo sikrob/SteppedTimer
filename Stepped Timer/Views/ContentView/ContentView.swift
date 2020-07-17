@@ -141,7 +141,6 @@ struct ContentView: View {
 
   private func deleteStep(timerStep: TimerStep) {
     guard let timerTime: TimerTime = allTimerTimes.first(where: { (searchedTime: TimerTime) -> Bool in
-      let stepNumber = searchedTime.stepNumber
       return searchedTime.stepNumber == timerStep.stepNumber
     }) else {
       print("deleteStep timerStep did not match a timerTime")
