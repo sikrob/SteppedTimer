@@ -189,7 +189,8 @@ struct ContentView: View {
     return VStack {
       StepsToolbar(addStepCallback: addStep,
                    resetListCallback: resetSteps,
-                   editMode: $editMode)
+                   editMode: $editMode,
+                   timerRunning: $timerRunning)
 
       CountdownTimerText(timeInterval: currentTotalTime, font: .largeTitle)
       List(wrappedTimes) { timerStep in

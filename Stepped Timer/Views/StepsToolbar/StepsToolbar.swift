@@ -12,6 +12,7 @@ struct StepsToolbar: View {
   var addStepCallback: () -> Void
   var resetListCallback: () -> Void
   @Binding var editMode: EditMode
+  @Binding var timerRunning: Bool
 
   // now create a modal that gets activated by stepstoolbar
   // and pass addStepCallback again down the line
@@ -26,15 +27,21 @@ struct StepsToolbar: View {
 
     return HStack {
       Button(action: addStepCallback) { Text("Add") }
+        .disabled(timerRunning)
+        .opacity(timerRunning ? 0 : 1)
         .padding(.leading, buttonPadding)
+        .animation(.easeInOut)
       Spacer()
       Button(action: resetListCallback) { Text("Reset") }
-        .disabled(editMode == .inactive)
-        .opacity(editMode == .inactive ? 0 : 1)
+        .disabled(timerRunning || editMode == .inactive)
+        .opacity(timerRunning || editMode == .inactive ? 0 : 1)
         .animation(.easeInOut)
       Spacer()
       SimpleEditButton(editMode: $editMode)
+        .disabled(timerRunning)
+        .opacity(timerRunning ? 0 : 1)
         .padding(.trailing, buttonPadding)
+        .animation(.easeInOut)
     }.padding(.bottom, buttonPadding)
   }
 }
