@@ -11,6 +11,16 @@ import SwiftUI
 import CoreData
 import AVFoundation
 
+// TimerTime Functions
+
+func indexTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>) {
+  var index: Int16 = 0
+  sortedTimerTimes.forEach({
+    $0.stepNumber = index
+    index += 1
+  })
+}
+
 // AV Functions
 
 func playStepSound(stepNumber: Int, gAudioPlayer: AVAudioPlayer, cAudioPlayer: AVAudioPlayer) {

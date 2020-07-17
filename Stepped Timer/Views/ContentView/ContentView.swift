@@ -130,6 +130,9 @@ struct ContentView: View {
 
     do {
       try context.save()
+      indexTimerTimes(sortedTimerTimes: allTimerTimes)
+      try context.save()
+
       let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
         return timerStep.currentTime
       })
@@ -151,13 +154,7 @@ struct ContentView: View {
 
     do {
       try context.save()
-
-      var index: Int16 = 0
-      allTimerTimes.forEach({
-        $0.stepNumber = index
-        index += 1
-      })
-
+      indexTimerTimes(sortedTimerTimes: allTimerTimes)
       try context.save()
 
       let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
