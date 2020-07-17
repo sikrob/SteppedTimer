@@ -13,6 +13,7 @@ struct TimerToolbar: View {
   var stopCallback: () -> Void
   var playImageSystemName: String
   var stopImageSystemName: String
+  @Binding var editMode: EditMode
 
   var body: some View {
     HStack {
@@ -21,23 +22,18 @@ struct TimerToolbar: View {
         Image(systemName: playImageSystemName)
           .imageScale(.large)
       }
+        .disabled(editMode != .inactive)
+        .animation(.easeInOut)
       Spacer()
       Button(action: stopCallback) {
         Image(systemName: stopImageSystemName)
         .imageScale(.large)
       }
+        .disabled(editMode != .inactive)
+        .animation(.easeInOut)
       Spacer()
     }
     .frame(height: 60.0)
     .background(Color(UIColor(named: "ToolbarBackgroundColor")!))
-  }
-}
-
-struct TimerToolbar_Previews: PreviewProvider {
-  static var previews: some View {
-    return TimerToolbar(playCallback: { },
-                        stopCallback: { },
-                        playImageSystemName: "play.fill",
-                        stopImageSystemName: "stop.fill")
   }
 }

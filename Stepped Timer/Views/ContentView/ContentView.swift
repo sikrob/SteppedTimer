@@ -202,7 +202,8 @@ struct ContentView: View {
       TimerToolbar(playCallback: toolbarPlayButtonAction,
                    stopCallback: toolbarStopButtonAction,
                    playImageSystemName: toolbarPlayImageName,
-                   stopImageSystemName: toolbarStopImageName)
+                   stopImageSystemName: toolbarStopImageName,
+                   editMode: $editMode)
     }
   }
 }
