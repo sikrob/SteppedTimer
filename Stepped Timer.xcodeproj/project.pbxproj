@@ -23,7 +23,6 @@
 		E1CB2C972426F44F00C8D5A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CB2C952426F44F00C8D5A0 /* LaunchScreen.storyboard */; };
 		E1CB2CA22426F45000C8D5A0 /* Stepped_TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CA12426F45000C8D5A0 /* Stepped_TimerTests.swift */; };
 		E1CB2CAD2426F45000C8D5A0 /* Stepped_TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CAC2426F45000C8D5A0 /* Stepped_TimerUITests.swift */; };
-		E1CB2CC2242712F600C8D5A0 /* TimerToolbarParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CC1242712F600C8D5A0 /* TimerToolbarParams.swift */; };
 		E1CB2CC42427156900C8D5A0 /* TimerToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CC32427156900C8D5A0 /* TimerToolbar.swift */; };
 		E1CB2CC924271CFF00C8D5A0 /* ContentViewLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CC824271CFF00C8D5A0 /* ContentViewLogic.swift */; };
 		E1CB2CCE2427BC2600C8D5A0 /* CountdownTimerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2CCD2427BC2600C8D5A0 /* CountdownTimerText.swift */; };
@@ -71,7 +70,6 @@
 		E1CB2CA82426F45000C8D5A0 /* Stepped TimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stepped TimerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CB2CAC2426F45000C8D5A0 /* Stepped_TimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stepped_TimerUITests.swift; sourceTree = "<group>"; };
 		E1CB2CAE2426F45000C8D5A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E1CB2CC1242712F600C8D5A0 /* TimerToolbarParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerToolbarParams.swift; sourceTree = "<group>"; };
 		E1CB2CC32427156900C8D5A0 /* TimerToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerToolbar.swift; sourceTree = "<group>"; };
 		E1CB2CC824271CFF00C8D5A0 /* ContentViewLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLogic.swift; sourceTree = "<group>"; };
 		E1CB2CCD2427BC2600C8D5A0 /* CountdownTimerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerText.swift; sourceTree = "<group>"; };
@@ -225,7 +223,6 @@
 			isa = PBXGroup;
 			children = (
 				E1CB2CC32427156900C8D5A0 /* TimerToolbar.swift */,
-				E1CB2CC1242712F600C8D5A0 /* TimerToolbarParams.swift */,
 			);
 			path = TimerToolbar;
 			sourceTree = "<group>";
@@ -410,7 +407,6 @@
 				E1182B3624B28FDF00674D93 /* ContentViewTimerLogic.swift in Sources */,
 				E1CB2C8A2426F44E00C8D5A0 /* SceneDelegate.swift in Sources */,
 				E1B8CC962443DCA20000C409 /* TimerStep.swift in Sources */,
-				E1CB2CC2242712F600C8D5A0 /* TimerToolbarParams.swift in Sources */,
 				E17629082493181F0023D2AA /* StepsToolbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -167,12 +167,6 @@ struct ContentView: View {
   }
 
   var body: some View {
-    let timerToolbarParams = TimerToolbarParams(
-      playCallback: toolbarPlayButtonAction,
-      stopCallback: toolbarStopButtonAction,
-      playImageSystemName: toolbarPlayImageName,
-      stopImageSystemName: toolbarStopImageName)
-
     let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
       return timerStep.currentTime
     })
@@ -205,7 +199,10 @@ struct ContentView: View {
         }
       }
 
-      TimerToolbar(params: timerToolbarParams)
+      TimerToolbar(playCallback: toolbarPlayButtonAction,
+                   stopCallback: toolbarStopButtonAction,
+                   playImageSystemName: toolbarPlayImageName,
+                   stopImageSystemName: toolbarStopImageName)
     }
   }
 }

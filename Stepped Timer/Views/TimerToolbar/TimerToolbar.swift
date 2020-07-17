@@ -9,18 +9,21 @@
 import SwiftUI
 
 struct TimerToolbar: View {
-  var params: TimerToolbarParams
+  var playCallback: () -> Void
+  var stopCallback: () -> Void
+  var playImageSystemName: String
+  var stopImageSystemName: String
 
   var body: some View {
     HStack {
       Spacer()
-      Button(action: params.playCallback) {
-        Image(systemName: params.playImageSystemName)
+      Button(action: playCallback) {
+        Image(systemName: playImageSystemName)
           .imageScale(.large)
       }
       Spacer()
-      Button(action: params.stopCallback) {
-        Image(systemName: params.stopImageSystemName)
+      Button(action: stopCallback) {
+        Image(systemName: stopImageSystemName)
         .imageScale(.large)
       }
       Spacer()
@@ -32,11 +35,9 @@ struct TimerToolbar: View {
 
 struct TimerToolbar_Previews: PreviewProvider {
   static var previews: some View {
-    let timerToolbarParams = TimerToolbarParams(
-      playCallback: { },
-      stopCallback: { },
-      playImageSystemName: "play.fill",
-      stopImageSystemName: "stop.fill")
-    return TimerToolbar(params: timerToolbarParams)
+    return TimerToolbar(playCallback: { },
+                        stopCallback: { },
+                        playImageSystemName: "play.fill",
+                        stopImageSystemName: "stop.fill")
   }
 }
