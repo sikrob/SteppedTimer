@@ -12,6 +12,7 @@ struct TimerStep: Identifiable, Equatable {
   var id: UUID
   var maxTime: TimeInterval
   var currentTime: TimeInterval
+  var stepNumber: Int
 
   static func == (lhs: TimerStep, rhs: TimerStep) -> Bool {
     return lhs.maxTime == rhs.maxTime && lhs.currentTime == rhs.currentTime

@@ -139,8 +139,35 @@ struct ContentView: View {
     }
   }
 
-  private func removeStep() {
-    // TODO
+  private func deleteStep(timerStep: TimerStep) {
+    guard let timerTime: TimerTime = allTimerTimes.first(where: { (searchedTime: TimerTime) -> Bool in
+      let stepNumber = searchedTime.stepNumber
+      return searchedTime.stepNumber == timerStep.stepNumber
+    }) else {
+      print("deleteStep timerStep did not match a timerTime")
+      return
+    }
+
+    context.delete(timerTime)
+
+    do {
+      try context.save()
+
+      var index: Int16 = 0
+      allTimerTimes.forEach({
+        $0.stepNumber = index
+        index += 1
+      })
+
+      try context.save()
+
+      let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
+        return timerStep.currentTime
+      })
+      timerSteps = timerStepsFromTimerTimes(sortedTimerTimes: allTimerTimes, currentTimes: currentTimes)
+    } catch {
+      print(error)
+    }
   }
 
   var body: some View {
@@ -161,26 +188,23 @@ struct ContentView: View {
       return cumulativeTime + nextTime
     })
 
+    let editModeInactive: Bool = self.editMode == .inactive
+
     return VStack {
       StepsToolbar(addStepCallback: addStep,
                    resetListCallback: resetSteps,
                    editMode: $editMode)
 
       CountdownTimerText(timeInterval: currentTotalTime, font: .largeTitle)
-      List(wrappedTimes) { timerTime in
-        if self.editMode == .inactive {
-          HStack {
-            Spacer()
-            CountdownTimerText(timeInterval: timerTime.currentTime, font: .title)
-            Spacer()
-          }
-        } else {
-          HStack {
-            Spacer()
-            CountdownTimerText(timeInterval: timerTime.currentTime, font: .title)
-            Spacer()
-            Button(action: self.addStep) { Image(systemName: "xmark.circle") }
-          }
+      List(wrappedTimes) { timerStep in
+        HStack {
+          Spacer()
+          CountdownTimerText(timeInterval: timerStep.currentTime, font: .title)
+          Spacer()
+          Button(action: { self.deleteStep(timerStep: timerStep) }) { Image(systemName: "xmark.circle") }
+            .disabled(editModeInactive)
+            .opacity(editModeInactive ? 0.0 : 1.0)
+            .animation(.easeInOut)
         }
       }
 

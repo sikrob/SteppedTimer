@@ -43,13 +43,13 @@ func prepareAudioPlayer(audioPlayer: AVAudioPlayer?, audioFilePath: String) -> A
 func timerStepsFromTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>, currentTimes: [TimeInterval]) -> [TimerStep] {
   return sortedTimerTimes.enumerated().map({ (index: Int, timerTime: TimerTime) -> TimerStep in
     let currentTime = index < currentTimes.count ? currentTimes[index] : timerTime.maxTime
-    return TimerStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: currentTime)
+    return TimerStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: currentTime, stepNumber: index)
   })
 }
 
 func maxTimeTimerSteps(sortedTimerTimes: FetchedResults<TimerTime>) -> [TimerStep] {
-  return sortedTimerTimes.map({ (timerTime: TimerTime) -> TimerStep in
-    return TimerStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: timerTime.maxTime)
+  return sortedTimerTimes.enumerated().map({ (index: Int, timerTime: TimerTime) -> TimerStep in
+    return TimerStep(id: timerTime.id!, maxTime: timerTime.maxTime, currentTime: timerTime.maxTime, stepNumber: index)
   })
 }
 
