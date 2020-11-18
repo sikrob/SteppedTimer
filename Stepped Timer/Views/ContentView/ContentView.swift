@@ -80,6 +80,8 @@ struct ContentView: View {
   }
 
   private func toolbarPlayButtonAction() {
+    // requestNotificationAuthorization()
+
     let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
       return timerStep.currentTime
     })

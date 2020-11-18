@@ -8,18 +8,30 @@
 
 import UserNotifications
 
-func requestNotificationAuthorization(callbackAction: () -> Void) {
+// THIS HAS BEEN BACK BURNERED UNTIL A FUTURE VERSION - WE DON'T NEED THIS TO MAKE THIS APP WORK GENERALLY.
+
+// Ask on first press play, which is closest point to notification.
+func requestNotificationAuthorization() {
   let center = UNUserNotificationCenter.current()
-  var success = false
   center.requestAuthorization(options: [.alert, .sound], completionHandler: { granted, error in
     if let _ = error {
-      // notify user to let them know this means we can't run in the background...
-    } else {
-      success = true
+      // not background running
     }
   })
+}
 
-  if (success) {
-    callbackAction()
-  }
+// any should probably be TimeStep? or something more reduced? what's actually available when we head to background?
+func scheduleAlerts(steps: [Any]) {
+  let center = UNUserNotificationCenter.current()
+  center.getNotificationSettings(completionHandler: { settings in
+    guard (settings.authorizationStatus == .authorized) ||
+          (settings.authorizationStatus == .provisional)
+    else { return }
+
+
+  })
+}
+
+func scheduleAlert() {
+
 }
