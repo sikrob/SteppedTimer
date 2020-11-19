@@ -134,6 +134,8 @@ struct ContentView: View {
   private func addStep(newTimeValue: String) {
     guard let newTime: Double = Double(newTimeValue) else { return }
 
+    timerSteps = maxTimeTimerSteps(sortedTimerTimes: allTimerTimes)
+
     let stepNumber = Int16(allTimerTimes.count)
     let newTimerTime = TimerTime(context: context)
     newTimerTime.id = UUID()
@@ -166,14 +168,15 @@ struct ContentView: View {
     context.delete(timerTime)
 
     do {
-      try context.save()
+      try context.save() // save new set of times...
       indexTimerTimes(sortedTimerTimes: allTimerTimes)
-      try context.save()
+      try context.save() // save new indices against good set of times
 
       let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
         return timerStep.currentTime
       })
-      timerSteps = timerStepsFromTimerTimes(sortedTimerTimes: allTimerTimes, currentTimes: currentTimes)
+
+      timerSteps = maxTimeTimerSteps(sortedTimerTimes: allTimerTimes)
     } catch {
       print(error)
     }

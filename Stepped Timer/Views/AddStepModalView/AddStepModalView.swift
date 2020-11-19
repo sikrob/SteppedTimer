@@ -31,14 +31,14 @@ struct AddStepModalView: View {
         })
         .frame(width: 200)
         .padding()
-        .border(Color.blue, width: 2)
+        .border(Color.blue, width: 1)
       Button("Add Step") {
         self.submitCallback(self.numberOfSeconds)
         self.closeCallback()
-      }
+      }.frame(width: 200).padding()
       Button("Cancel") {
         self.closeCallback()
-      }
+      }.frame(width: 200).padding()
     }
   }
 }
