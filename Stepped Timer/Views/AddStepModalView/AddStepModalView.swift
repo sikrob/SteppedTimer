@@ -10,14 +10,17 @@ import SwiftUI
 import Combine
 
 // Modal view for adding steps configured with the desired max time.
-struct AddStepView: View {
+struct AddStepModalView: View {
+  @Environment(\.presentationMode) var presentation
   @State var numberOfSeconds: String = ""
 
-  var cancelCallback: () -> Void
+  var submitCallback: (String) -> Void
+  var closeCallback: () -> Void
 
   var body: some View {
     VStack {
-      Text("Add New Step")
+      Text("Add a New Step")
+        .font(.largeTitle)
       TextField("Number of seconds", text: $numberOfSeconds)
         .keyboardType(.numberPad)
         .onReceive(Just(numberOfSeconds), perform: { newValue in
@@ -26,15 +29,22 @@ struct AddStepView: View {
             self.numberOfSeconds = filtered
           }
         })
+        .frame(width: 200)
+        .padding()
+        .border(Color.blue, width: 2)
+      Button("Add Step") {
+        self.submitCallback(self.numberOfSeconds)
+        self.closeCallback()
+      }
       Button("Cancel") {
-        self.cancelCallback()
+        self.closeCallback()
       }
     }
   }
 }
 
-struct AddStepView_Previews: PreviewProvider {
+struct AddStepModalView_Previews: PreviewProvider {
   static var previews: some View {
-    return AddStepView(cancelCallback: { return } )
+    return AddStepModalView(submitCallback: { foo in return }, closeCallback: { return } )
   }
 }
