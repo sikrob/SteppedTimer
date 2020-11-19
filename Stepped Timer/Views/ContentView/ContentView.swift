@@ -28,6 +28,7 @@ struct ContentView: View {
   @State var toolbarStopImageName: String = toolbarStopImageNameForTimerRunning(false)
 
   @State var editMode: EditMode = EditMode.inactive
+  @State var addingStep: Bool = false
 
   let gPath: String? = Bundle.main.path(forResource: "G", ofType: "aiff", inDirectory: "Sounds")
   let cPath: String? = Bundle.main.path(forResource: "C", ofType: "aiff", inDirectory: "Sounds")
@@ -122,12 +123,22 @@ struct ContentView: View {
     }
   }
 
-  private func addStep() {
+  private func openAddStepModal() {
+    self.addingStep = true
+  }
+
+  private func closeAddStepModal() {
+    self.addingStep = false
+  }
+
+  private func addStep(newTimeValue: String) {
+    guard let newTime: Double = Double(newTimeValue) else { return }
+
     let stepNumber = Int16(allTimerTimes.count)
     let newTimerTime = TimerTime(context: context)
     newTimerTime.id = UUID()
-    newTimerTime.maxTime = 5.0
-    newTimerTime.currentTime = 5.0
+    newTimerTime.maxTime = newTime
+    newTimerTime.currentTime = newTime
     newTimerTime.stepNumber = stepNumber
 
     do {
@@ -183,7 +194,7 @@ struct ContentView: View {
     let editModeInactive: Bool = self.editMode == .inactive
 
     return VStack {
-      StepsToolbar(addStepCallback: addStep,
+      StepsToolbar(addStepCallback: openAddStepModal,
                    resetListCallback: resetSteps,
                    editMode: $editMode,
                    timerRunning: $timerRunning)
@@ -199,7 +210,9 @@ struct ContentView: View {
             .opacity(editModeInactive ? 0.0 : 1.0)
             .animation(.easeInOut)
         }
-      }
+      }.sheet(isPresented: $addingStep, content: {
+        AddStepModalView(submitCallback: self.addStep, closeCallback: self.closeAddStepModal)
+      })
 
       TimerToolbar(playCallback: toolbarPlayButtonAction,
                    stopCallback: toolbarStopButtonAction,
