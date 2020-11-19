@@ -32,7 +32,7 @@ struct StepsToolbar: View {
         .padding(.leading, buttonPadding)
         .animation(.easeInOut)
       Spacer()
-      Button(action: resetListCallback) { Text("Reset") }
+      Button(action: resetListCallback) { Text("Delete All") }
         .disabled(timerRunning || editMode == .inactive)
         .opacity(timerRunning || editMode == .inactive ? 0 : 1)
         .animation(.easeInOut)

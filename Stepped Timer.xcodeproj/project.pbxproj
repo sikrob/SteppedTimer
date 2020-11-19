@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E101E4AB24B0CDA400961BAB /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = E101E4AA24B0CDA400961BAB /* Sounds */; };
+		E10A795A2565CC240097A5C6 /* AddStepModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10A79592565CC240097A5C6 /* AddStepModalView.swift */; };
 		E113E7BA2563514C0068DFAE /* NotificationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E113E7B92563514C0068DFAE /* NotificationLogic.swift */; };
 		E1146F18243C099A00A87DC1 /* ContentViewLogic_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1146F17243C099A00A87DC1 /* ContentViewLogic_Tests.swift */; };
 		E1182B3624B28FDF00674D93 /* ContentViewTimerLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1182B3524B28FDF00674D93 /* ContentViewTimerLogic.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		E101E4AA24B0CDA400961BAB /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
+		E10A79592565CC240097A5C6 /* AddStepModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStepModalView.swift; sourceTree = "<group>"; };
 		E113E7B92563514C0068DFAE /* NotificationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationLogic.swift; path = "Stepped Timer/Views/NotificationLogic.swift"; sourceTree = SOURCE_ROOT; };
 		E1146F17243C099A00A87DC1 /* ContentViewLogic_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLogic_Tests.swift; sourceTree = "<group>"; };
 		E1182B3524B28FDF00674D93 /* ContentViewTimerLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTimerLogic.swift; sourceTree = "<group>"; };
@@ -104,6 +106,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E10A79582565CC030097A5C6 /* AddStepModalView */ = {
+			isa = PBXGroup;
+			children = (
+				E10A79592565CC240097A5C6 /* AddStepModalView.swift */,
+			);
+			path = AddStepModalView;
+			sourceTree = "<group>";
+		};
 		E1146F16243C098A00A87DC1 /* ContentView */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +222,7 @@
 		E1CB2CC5242715C300C8D5A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E10A79582565CC030097A5C6 /* AddStepModalView */,
 				E17629062493179C0023D2AA /* StepsToolbar */,
 				E131CFB524841BA4004767E3 /* Buttons */,
 				E1CB2CCA24271D6900C8D5A0 /* ContentView */,
@@ -411,6 +422,7 @@
 				E1182B3624B28FDF00674D93 /* ContentViewTimerLogic.swift in Sources */,
 				E1CB2C8A2426F44E00C8D5A0 /* SceneDelegate.swift in Sources */,
 				E1B8CC962443DCA20000C409 /* TimerStep.swift in Sources */,
+				E10A795A2565CC240097A5C6 /* AddStepModalView.swift in Sources */,
 				E17629082493181F0023D2AA /* StepsToolbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
