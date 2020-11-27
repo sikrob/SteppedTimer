@@ -44,14 +44,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
   }
 
+  // isIdleTimerDisabled = true or else we won't be able to keep showing the count down!
   func sceneDidBecomeActive(_ scene: UIScene) {
-    // Called when the scene has moved from an inactive state to an active state.
-    // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+    UIApplication.shared.isIdleTimerDisabled = true
   }
 
   func sceneWillResignActive(_ scene: UIScene) {
     // Called when the scene will move from an active state to an inactive state.
     // This may occur due to temporary interruptions (ex. an incoming phone call).
+    UIApplication.shared.isIdleTimerDisabled = false
   }
 
   func sceneWillEnterForeground(_ scene: UIScene) {
