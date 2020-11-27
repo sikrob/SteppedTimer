@@ -6,7 +6,7 @@
 //  Copyright © 2020 Robert Sikorski. All rights reserved.
 //
 
-import Foundation
-import CoreData
-
-extension TimerTime: Identifiable {}
+//import Foundation
+//import CoreData
+//
+//extension TimerTime: Identifiable {}
