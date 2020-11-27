@@ -31,7 +31,7 @@ struct AddStepModalView: View {
         })
         .frame(width: 200)
         .padding()
-        .border(Color.blue, width: 1)
+        .textFieldStyle(RoundedBorderTextFieldStyle())
       Button("Add Step") {
         self.submitCallback(self.numberOfSeconds)
         self.closeCallback()
