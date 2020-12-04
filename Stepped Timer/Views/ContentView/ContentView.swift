@@ -131,7 +131,7 @@ struct ContentView: View {
     self.addingStep = false
   }
 
-  private func addStep(newTimeValue: String) {
+  private func addStep(newTimeValue: String, pendPosition: PendPosition) {
     guard let newTime: Double = Double(newTimeValue) else { return }
 
     timerSteps = maxTimeTimerSteps(sortedTimerTimes: allTimerTimes)

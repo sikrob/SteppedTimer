@@ -14,7 +14,7 @@ struct AddStepModalView: View {
   @Environment(\.presentationMode) var presentation
   @State var numberOfSeconds: String = ""
 
-  var submitCallback: (String) -> Void
+  var submitCallback: (String, PendPosition) -> Void
   var closeCallback: () -> Void
 
   var body: some View {
@@ -33,7 +33,7 @@ struct AddStepModalView: View {
         .padding()
         .textFieldStyle(RoundedBorderTextFieldStyle())
       Button("Add Step") {
-        self.submitCallback(self.numberOfSeconds)
+        self.submitCallback(self.numberOfSeconds, .append)
         self.closeCallback()
       }.frame(width: 200).padding()
       Button("Cancel") {
@@ -45,6 +45,6 @@ struct AddStepModalView: View {
 
 struct AddStepModalView_Previews: PreviewProvider {
   static var previews: some View {
-    return AddStepModalView(submitCallback: { foo in return }, closeCallback: { return } )
+    return AddStepModalView(submitCallback: { _, _ in return }, closeCallback: { return } )
   }
 }
