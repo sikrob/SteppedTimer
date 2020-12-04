@@ -172,9 +172,9 @@ struct ContentView: View {
       indexTimerTimes(sortedTimerTimes: allTimerTimes)
       try context.save() // save new indices against good set of times
 
-      let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
-        return timerStep.currentTime
-      })
+//      let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
+//        return timerStep.currentTime
+//      })
 
       timerSteps = maxTimeTimerSteps(sortedTimerTimes: allTimerTimes)
     } catch {

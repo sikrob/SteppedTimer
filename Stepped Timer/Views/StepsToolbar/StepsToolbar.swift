@@ -14,11 +14,6 @@ struct StepsToolbar: View {
   @Binding var editMode: EditMode
   @Binding var timerRunning: Bool
 
-  // now create a modal that gets activated by stepstoolbar
-  // and pass addStepCallback again down the line
-  // we will update addStepCallback to include whatever
-  // we need to make it add the form data
-
   // reset should open a modal that asks
   // are you sure?
 
@@ -43,5 +38,14 @@ struct StepsToolbar: View {
         .padding(.trailing, buttonPadding)
         .animation(.easeInOut)
     }.padding(.bottom, buttonPadding)
+  }
+}
+
+struct StepsToolbar_Previews: PreviewProvider {
+  static var previews: some View {
+    let foo = Binding<EditMode>(get: { return EditMode.active }, set: { _ in return })
+    let bar = Binding<Bool>(get: { return true }, set: { _ in return })
+
+    return StepsToolbar(addStepCallback: { return }, resetListCallback: { return }, editMode: foo, timerRunning: bar)
   }
 }
