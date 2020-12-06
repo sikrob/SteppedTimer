@@ -41,6 +41,8 @@ struct ContentView: View {
   }
 
   private func startTimer() {
+    UIApplication.shared.isIdleTimerDisabled = true
+
     let runLoop = CFRunLoopGetCurrent()
     timerDispatchTime = DispatchTime.now()
 

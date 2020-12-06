@@ -10,6 +10,8 @@ import Foundation
 import SwiftUI
 
 func stopTimer(timer: Binding<Timer?>, timerRunning: Binding<Bool>) {
+  UIApplication.shared.isIdleTimerDisabled = false
+
   if timer.wrappedValue != nil {
     let runLoop = CFRunLoopGetCurrent()
     CFRunLoopRemoveTimer(runLoop, timer.wrappedValue!, .commonModes)
