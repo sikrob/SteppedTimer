@@ -137,23 +137,27 @@ struct ContentView: View {
     guard let newTime: Double = Double(newTimeValue) else { return }
 
     timerSteps = maxTimeTimerSteps(sortedTimerTimes: allTimerTimes)
+    let stepCount = allTimerTimes.count
 
-    let stepNumber = Int16(allTimerTimes.count)
+    if pendPosition == .prepend {
+      allTimerTimes.forEach({ timerTime in
+        timerTime.stepNumber += 1
+      })
+    }
+
     let newTimerTime = TimerTime(context: context)
     newTimerTime.id = UUID()
     newTimerTime.maxTime = newTime
     newTimerTime.currentTime = newTime
-    newTimerTime.stepNumber = stepNumber
+
+    newTimerTime.stepNumber = pendPosition == .append ? Int16(stepCount) : Int16(0)
 
     do {
       try context.save()
       indexTimerTimes(sortedTimerTimes: allTimerTimes)
       try context.save()
 
-      let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
-        return timerStep.currentTime
-      })
-      timerSteps = timerStepsFromTimerTimes(sortedTimerTimes: allTimerTimes, currentTimes: currentTimes)
+      timerSteps = maxTimeTimerSteps(sortedTimerTimes: allTimerTimes)
     } catch {
       print(error)
     }
