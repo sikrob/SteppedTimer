@@ -17,23 +17,52 @@ struct TimerToolbar: View {
 
   var body: some View {
     HStack {
-      Spacer()
-      Button(action: playCallback) {
-        Image(systemName: playImageSystemName)
-          .imageScale(.large)
+      HStack {
+        Spacer()
+          .frame(width: 30, height: 60, alignment: .center)
+        Spacer()
+
+        Button(action: playCallback) {
+          Image(systemName: playImageSystemName)
+            .resizable()
+            .frame(width: 40, height: 40, alignment: .center)
+        }
+          .disabled(editMode != .inactive)
+          .animation(.easeInOut)
+        Spacer()
+        Button(action: stopCallback) {
+          Image(systemName: stopImageSystemName)
+            .resizable()
+            .frame(width: 40, height: 40, alignment: .center)
+        }
+          .disabled(editMode != .inactive)
+          .animation(.easeInOut)
+
+        Spacer()
+        Button(action: { }) { // TODO: info, donate pay
+          Image(systemName: "info.circle")
+        }
+          .frame(width: 25, height: 60, alignment: .center)
+        Spacer()
+          .frame(width: 5, height: 64, alignment: .center)
       }
-        .disabled(editMode != .inactive)
-        .animation(.easeInOut)
-      Spacer()
-      Button(action: stopCallback) {
-        Image(systemName: stopImageSystemName)
-        .imageScale(.large)
-      }
-        .disabled(editMode != .inactive)
-        .animation(.easeInOut)
-      Spacer()
+      .frame(height: 60.0)
     }
-    .frame(height: 60.0)
     .background(Color(UIColor(named: "ToolbarBackgroundColor")!))
+  }
+}
+
+struct TimerToolbar_Previews: PreviewProvider {
+  static var previews: some View {
+    return TimerToolbar(
+      playCallback: { return },
+      stopCallback: { return },
+      playImageSystemName: "play.fill",
+      stopImageSystemName: "arrow.clockwise.circle.fill",
+      editMode: Binding<EditMode>(
+        get: { return EditMode.inactive },
+        set: { _ in }
+      )
+    )
   }
 }
