@@ -43,6 +43,7 @@ struct TimerToolbar: View {
           Image(systemName: "info.circle")
         }
           .frame(width: 25, height: 60, alignment: .center)
+          .hidden() // unhide when ready
         Spacer()
           .frame(width: 5, height: 64, alignment: .center)
       }
