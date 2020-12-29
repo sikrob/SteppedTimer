@@ -25,7 +25,11 @@ func indexTimerTimes(sortedTimerTimes: FetchedResults<TimerTime>) {
 
 func playStepSound(stepNumber: Int, gAudioPlayer: AVAudioPlayer, cAudioPlayer: AVAudioPlayer) {
   if stepNumber > 0 {
-    gAudioPlayer.play()
+    if gAudioPlayer.isPlaying {
+      gAudioPlayer.stop()
+      gAudioPlayer.currentTime = 0
+    }
+      gAudioPlayer.play()
   } else {
     cAudioPlayer.play()
   }
