@@ -13,6 +13,7 @@ import Combine
 struct AddStepModalView: View {
   @Environment(\.presentationMode) var presentation
   @State var numberOfSeconds: String = ""
+  @State var pendPosition: PendPosition = .append
 
   var submitCallback: (String, PendPosition) -> Void
   var closeCallback: () -> Void
@@ -29,16 +30,22 @@ struct AddStepModalView: View {
             self.numberOfSeconds = filtered
           }
         })
-        .frame(width: 200)
+        .frame(width: 320)
         .padding()
         .textFieldStyle(RoundedBorderTextFieldStyle())
+
       Button("Add Step") {
-        self.submitCallback(self.numberOfSeconds, .append)
+        self.submitCallback(self.numberOfSeconds, self.pendPosition)
         self.closeCallback()
       }.frame(width: 200).padding()
       Button("Cancel") {
         self.closeCallback()
       }.frame(width: 200).padding()
+
+      Picker("Append or Prepend?", selection: $pendPosition) {
+        Text("Prepend").tag(PendPosition.prepend)
+        Text("Append").tag(PendPosition.append)
+      }.frame(width: 320)
     }
   }
 }
