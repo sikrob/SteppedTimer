@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		E1A2A2CD2579CE200098C524 /* PendPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2A2CC2579CE200098C524 /* PendPosition.swift */; };
 		E1B8CC962443DCA20000C409 /* TimerStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8CC952443DCA20000C409 /* TimerStep.swift */; };
 		E1CB0160259CEFF000E070DA /* AboutModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB015F259CEFF000E070DA /* AboutModalView.swift */; };
+		E1CB0169259D0AAF00E070DA /* BuyMeACoffee in Frameworks */ = {isa = PBXBuildFile; productRef = E1CB0168259D0AAF00E070DA /* BuyMeACoffee */; };
 		E1CB2C882426F44E00C8D5A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2C872426F44E00C8D5A0 /* AppDelegate.swift */; };
 		E1CB2C8A2426F44E00C8D5A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2C892426F44E00C8D5A0 /* SceneDelegate.swift */; };
 		E1CB2C8F2426F44E00C8D5A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2C8E2426F44E00C8D5A0 /* ContentView.swift */; };
@@ -90,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CB0169259D0AAF00E070DA /* BuyMeACoffee in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +317,9 @@
 			dependencies = (
 			);
 			name = "Stepped Timer";
+			packageProductDependencies = (
+				E1CB0168259D0AAF00E070DA /* BuyMeACoffee */,
+			);
 			productName = "Stepped Timer";
 			productReference = E1CB2C842426F44E00C8D5A0 /* Stepped Timer.app */;
 			productType = "com.apple.product-type.application";
@@ -387,6 +392,9 @@
 				Base,
 			);
 			mainGroup = E1CB2C7B2426F44E00C8D5A0;
+			packageReferences = (
+				E1CB0167259D0AAE00E070DA /* XCRemoteSwiftPackageReference "buymeacoffee" */,
+			);
 			productRefGroup = E1CB2C852426F44E00C8D5A0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -778,6 +786,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E1CB0167259D0AAE00E070DA /* XCRemoteSwiftPackageReference "buymeacoffee" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/appcraftstudio/buymeacoffee.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E1CB0168259D0AAF00E070DA /* BuyMeACoffee */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1CB0167259D0AAE00E070DA /* XCRemoteSwiftPackageReference "buymeacoffee" */;
+			productName = BuyMeACoffee;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E17BEEAF244C0ECC00A6D6D0 /* SteppedTimer.xcdatamodeld */ = {
