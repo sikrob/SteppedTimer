@@ -18,6 +18,7 @@
 		E17BEEB3244C0F0F00A6D6D0 /* TimerTime+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BEEB2244C0F0F00A6D6D0 /* TimerTime+Extensions.swift */; };
 		E1A2A2CD2579CE200098C524 /* PendPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2A2CC2579CE200098C524 /* PendPosition.swift */; };
 		E1B8CC962443DCA20000C409 /* TimerStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8CC952443DCA20000C409 /* TimerStep.swift */; };
+		E1CB0160259CEFF000E070DA /* AboutModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB015F259CEFF000E070DA /* AboutModalView.swift */; };
 		E1CB2C882426F44E00C8D5A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2C872426F44E00C8D5A0 /* AppDelegate.swift */; };
 		E1CB2C8A2426F44E00C8D5A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2C892426F44E00C8D5A0 /* SceneDelegate.swift */; };
 		E1CB2C8F2426F44E00C8D5A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB2C8E2426F44E00C8D5A0 /* ContentView.swift */; };
@@ -62,6 +63,7 @@
 		E17BEEB2244C0F0F00A6D6D0 /* TimerTime+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimerTime+Extensions.swift"; sourceTree = "<group>"; };
 		E1A2A2CC2579CE200098C524 /* PendPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendPosition.swift; sourceTree = "<group>"; };
 		E1B8CC952443DCA20000C409 /* TimerStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStep.swift; sourceTree = "<group>"; };
+		E1CB015F259CEFF000E070DA /* AboutModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModalView.swift; sourceTree = "<group>"; };
 		E1CB2C842426F44E00C8D5A0 /* Stepped Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stepped Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CB2C872426F44E00C8D5A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1CB2C892426F44E00C8D5A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,14 @@
 			path = "Shared Structs";
 			sourceTree = "<group>";
 		};
+		E1CB015E259CEFCA00E070DA /* AboutModalView */ = {
+			isa = PBXGroup;
+			children = (
+				E1CB015F259CEFF000E070DA /* AboutModalView.swift */,
+			);
+			path = AboutModalView;
+			sourceTree = "<group>";
+		};
 		E1CB2C7B2426F44E00C8D5A0 = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +243,7 @@
 		E1CB2CC5242715C300C8D5A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E1CB015E259CEFCA00E070DA /* AboutModalView */,
 				E10A79582565CC030097A5C6 /* AddStepModalView */,
 				E17629062493179C0023D2AA /* StepsToolbar */,
 				E131CFB524841BA4004767E3 /* Buttons */,
@@ -436,6 +447,7 @@
 				E1B8CC962443DCA20000C409 /* TimerStep.swift in Sources */,
 				E10A795A2565CC240097A5C6 /* AddStepModalView.swift in Sources */,
 				E17629082493181F0023D2AA /* StepsToolbar.swift in Sources */,
+				E1CB0160259CEFF000E070DA /* AboutModalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
