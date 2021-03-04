@@ -11,6 +11,7 @@ import SwiftUI
 struct TimerToolbar: View {
   var playCallback: () -> Void
   var stopCallback: () -> Void
+  var aboutCallback: () -> Void
   var playImageSystemName: String
   var stopImageSystemName: String
   @Binding var editMode: EditMode
@@ -43,7 +44,9 @@ struct TimerToolbar: View {
       } else {
         HStack {
           Spacer()
-          Text("About / Donate") // turn into button, create info/donate sheet
+          Button(action: aboutCallback, label: {
+            Text("About / Donate")
+          })
           Spacer()
         }.frame(height: 60.0)
       }
@@ -57,6 +60,7 @@ struct TimerToolbar_Previews: PreviewProvider {
     return TimerToolbar(
       playCallback: { return },
       stopCallback: { return },
+      aboutCallback: { return },
       playImageSystemName: "play.fill",
       stopImageSystemName: "arrow.clockwise.circle.fill",
       editMode: Binding<EditMode>(

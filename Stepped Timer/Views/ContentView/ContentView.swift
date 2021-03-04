@@ -29,6 +29,7 @@ struct ContentView: View {
 
   @State var editMode: EditMode = EditMode.inactive
   @State var addingStep: Bool = false
+  @State var showingAbout: Bool = false
 
   let gPath: String? = Bundle.main.path(forResource: "G", ofType: "aiff", inDirectory: "Sounds")
   let cPath: String? = Bundle.main.path(forResource: "C", ofType: "aiff", inDirectory: "Sounds")
@@ -109,6 +110,14 @@ struct ContentView: View {
     updateToolbarImageNames(toolbarPlayImageName: $toolbarPlayImageName, toolbarStopImageName: $toolbarStopImageName, timerRunning: timerRunning)
   }
 
+  private func openAboutModal() {
+    self.showingAbout = true
+  }
+
+  private func closeAboutModal() {
+    self.showingAbout = false
+  }
+
   private func resetSteps() {
     allTimerTimes.forEach({ (timerTime) in
       context.delete(timerTime)
@@ -178,10 +187,6 @@ struct ContentView: View {
       indexTimerTimes(sortedTimerTimes: allTimerTimes)
       try context.save() // save new indices against good set of times
 
-//      let currentTimes = timerSteps.map({ (timerStep: TimerStep) -> TimeInterval in
-//        return timerStep.currentTime
-//      })
-
       timerSteps = maxTimeTimerSteps(sortedTimerTimes: allTimerTimes)
     } catch {
       print(error)
@@ -225,9 +230,13 @@ struct ContentView: View {
 
       TimerToolbar(playCallback: toolbarPlayButtonAction,
                    stopCallback: toolbarStopButtonAction,
+                   aboutCallback: openAboutModal,
                    playImageSystemName: toolbarPlayImageName,
                    stopImageSystemName: toolbarStopImageName,
                    editMode: $editMode)
+      .sheet(isPresented: $showingAbout, content: {
+        AboutModalView(closeCallback: self.closeAboutModal)
+      })
     }
   }
 }
