@@ -142,8 +142,16 @@ struct ContentView: View {
     self.addingStep = false
   }
 
+  private func updatePendPositionDefault(_ pendPosition: PendPosition) {
+    let defaults = UserDefaults.standard
+    // check if differ? Assuming it's negligible to just update
+    defaults.setValue(pendPosition.rawValue, forKey: "pendPosition")
+  }
+
   private func addStep(newTimeValue: String, pendPosition: PendPosition) {
     guard let newTime: Double = Double(newTimeValue) else { return }
+
+    updatePendPositionDefault(pendPosition)
 
     timerSteps = maxTimeTimerSteps(sortedTimerTimes: allTimerTimes)
     let stepCount = allTimerTimes.count
@@ -207,6 +215,9 @@ struct ContentView: View {
 
     let editModeInactive: Bool = self.editMode == .inactive
 
+    let defaults = UserDefaults.standard
+    let pendPosition: PendPosition = PendPosition.init(rawValue: defaults.object(forKey: "pendPosition") as? String ?? "append")!
+
     return VStack {
       StepsToolbar(addStepCallback: openAddStepModal,
                    resetListCallback: resetSteps,
@@ -225,7 +236,7 @@ struct ContentView: View {
             .animation(.easeInOut)
         }
       }.sheet(isPresented: $addingStep, content: {
-        AddStepModalView(submitCallback: self.addStep, closeCallback: self.closeAddStepModal)
+        AddStepModalView(pendPosition: pendPosition, submitCallback: self.addStep, closeCallback: self.closeAddStepModal)
       })
 
       TimerToolbar(playCallback: toolbarPlayButtonAction,

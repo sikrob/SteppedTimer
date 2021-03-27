@@ -6,7 +6,7 @@
 //  Copyright © 2020 Robert Sikorski. All rights reserved.
 //
 
-enum PendPosition {
-  case prepend
-  case append
+enum PendPosition: String {
+  case prepend = "PendPosition.prepend"
+  case append = "PendPosition.append"
 }

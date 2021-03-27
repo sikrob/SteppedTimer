@@ -13,7 +13,8 @@ import Combine
 struct AddStepModalView: View {
   @Environment(\.presentationMode) var presentation
   @State var numberOfSeconds: String = ""
-  @State var pendPosition: PendPosition = .append
+
+  @State var pendPosition: PendPosition
 
   var submitCallback: (String, PendPosition) -> Void
   var closeCallback: () -> Void
@@ -50,8 +51,8 @@ struct AddStepModalView: View {
   }
 }
 
-struct AddStepModalView_Previews: PreviewProvider {
-  static var previews: some View {
-    return AddStepModalView(submitCallback: { _, _ in return }, closeCallback: { return } )
-  }
-}
+//struct AddStepModalView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    return AddStepModalView(submitCallback: { _, _ in return }, closeCallback: { return } )
+//  }
+//}
